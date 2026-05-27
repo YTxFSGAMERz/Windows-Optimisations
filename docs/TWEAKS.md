@@ -1,256 +1,251 @@
-# Windows Tweaks and Optimizations
+# 🛠️ Windows Tweaks & Optimizations Guide
 
-This document provides detailed information about the various system tweaks and optimizations available in the `Tweaks/` directory. Each tweak is designed to improve system performance, privacy, or usability on Windows 10/11 systems.
-
-## Table of Contents
-1. [Appearance Tweaks](#appearance-tweaks)
-2. [CPU Priority Tweaks](#cpu-priority-tweaks)
-3. [CPU Mitigations](#cpu-mitigations)
-4. [CPU Power Plans](#cpu-power-plans)
-5. [Mem Reduct RAM](#mem-reduct-ram)
-6. [Optimize SSD](#optimize-ssd)
-7. [RAM Compression](#ram-compression)
-8. [Services Tweaks](#services-tweaks)
-9. [Telemetry Tweaks](#telemetry-tweaks)
-10. [Apply Optimizations Script](#apply-optimizations-script)
-
-## Appearance Tweaks
-
-Located in: `Tweaks/Appearance/`
-
-These registry files modify visual elements of Windows to improve performance or change the appearance:
-
-### Available Tweaks:
-- **Disable Transparency.reg** - Disables transparency effects in taskbar, start menu, and action center
-- **Enable Transparency.reg** - Re-enables transparency effects
-- **Dark Theme.reg** - Applies dark theme to Windows interface
-- **Light Theme.reg** - Applies light theme to Windows interface
-- **Disable Action Center.reg** - Disables the Windows Action Center
-- **Enable Action Center.reg** - Re-enables the Windows Action Center
-- **Disable Cortana.reg** - Disables Cortana digital assistant
-- **Enable Cortana.reg** - Re-enables Cortana digital assistant
-
-### Performance Impact:
-Disabling transparency and visual effects can significantly improve performance on older or lower-end systems by reducing GPU and CPU usage.
-
-## CPU Priority Tweaks
-
-Located in: `Tweaks/Recursos\CPU Priority\`
-
-These registry files adjust process priority settings to favor either system responsiveness or gaming performance:
-
-### Available Tweaks:
-- **Windows Priority.reg** - Sets default Windows process priorities (balanced)
-- **Games Priority.reg** - Increases priority of gaming processes for better FPS
-- **Revert Changes.reg** - Restores default priority settings
-
-### How It Works:
-Windows uses priority classes to determine how much CPU time a process gets relative to others. The gaming tweak increases the priority of foreground applications (typically games) to ensure they get more CPU resources.
-
-## CPU Mitigations
-
-Located in: `Tweaks/Recursos\CPU Mitigations\`
-
-These tools control hardware-level security mitigations for vulnerabilities like Spectre and Meltdown:
-
-### Available Tools:
-- **InSpectre.exe** - Utility to enable/disable CPU mitigations with a GUI interface
-
-### Security vs Performance Trade-off:
-- **Mitigations ON**: Maximum security against CPU vulnerabilities but potential performance impact
-- **Mitigations OFF**: Better performance but increased vulnerability to certain CPU-based attacks
-- Only disable mitigations if you understand the security risks and have other protections in place
-
-## CPU Power Plans
-
-Located in: `Tweaks\Recursos\CPU Power Plan\`
-
-These files define custom power plans for different usage scenarios:
-
-### Available Files:
-- **QuickCPU.pow** - Exported power plan optimized for CPU performance
-- **Aplicar.bat** / **Apply.bat** - Batch files to apply the custom power plan
-
-### Features:
-The QuickCPU power plan is configured to:
-- Keep CPU cores at higher frequencies longer
-- Reduce core parking aggressiveness
-- Optimize for responsiveness over power saving
-- Ideal for gaming, content creation, and other CPU-intensive tasks
-
-## Mem Reduct RAM
-
-Located in: `Tweaks\Recursos\Mem Reduct RAM\`
-
-This is a memory optimization utility that helps reduce RAM usage:
-
-### Available Files:
-- **memreduct.exe** - Main application executable
-- **memreduct.lng** - Language file
-- **memreduct.sig** - Security signature
-- **memreduct.ini** - Configuration file
-- **portable.dat** - Indicates portable mode
-- **memreduct-3.4-setup.exe** - Installer version
-
-### Features:
-MemReduce is a lightweight application that:
-- Cleans unused memory from the system
-- Can automatically optimize memory at set intervals
-- Shows real-time memory usage statistics
-- Works without installing drivers or services
-- Particularly useful on systems with limited RAM
-
-## Optimize SSD
-
-Located in: `Tweaks\Recursos\Optimize SSD\`
-
-These registry files optimize Windows for SSD storage devices:
-
-### Available Files:
-- **Optimizar SSD.reg** - Applies SSD optimizations
-- **Revert Changes.reg** - Restores default settings
-
-### Optimizations Applied:
-- Disables Superfetch/Prefetch (less beneficial on SSDs)
-- Disables defragmentation scheduling (not needed for SSDs)
-- Enables TRIM command support
-- Adjusts write caching settings
-- Reduces unnecessary write operations to extend SSD lifespan
-
-## RAM Compression
-
-Located in: `Tweaks\Recursos\RAM Compression\`
-
-These scripts control Windows memory compression feature:
-
-### Available Files:
-- **Disable Compression.cmd** - Disables memory compression
-- **Revert Changes.bat** - Re-enables memory compression
-
-### When to Use:
-- **Disable**: On systems with plenty of RAM where compression overhead isn't needed
-- **Enable**: On systems with limited RAM where compression helps prevent paging to disk
-- Memory compression uses CPU to compress unused memory pages, trading CPU usage for reduced disk I/O
-
-## Services Tweaks
-
-Located in: `Tweaks\Recursos\Services\`
-
-These registry files optimize Windows services for better performance:
-
-### Available Files:
-- **Optimize Services.reg** - Applies service optimizations
-- **Revert Changes.reg** - Restores default service settings
-
-### Services Typically Affected:
-- Disables unnecessary background services
-- Sets service startup types to Manual where appropriate
-- Reduces background resource consumption
-- Improves boot times and overall system responsiveness
-
-## Telemetry Tweaks
-
-Located in: `Tweaks\Recursos\Telemetry\`
-
-These registry files reduce or disable Windows telemetry and data collection:
-
-### Available Files:
-- **Disable Telemetry.reg** - Applies telemetry reduction settings
-- **Revert Changes.reg** - Restores default telemetry settings
-
-### Data Collection Reduced:
-- Diagnostic and usage data
-- Telemetry reporting
-- Personalized advertising
-- Location tracking (where applicable)
-- Voice and inking data
-- Handwriting recognition improvements
-
-### Privacy Note:
-While these tweaks reduce telemetry, some data collection may still occur for essential Windows functionality. For maximum privacy, consider using the unattended installation which includes more comprehensive telemetry disabling.
-
-## Apply Optimizations Script
-
-Located at: `Tweaks\Apply Optimizations.bat`
-
-This batch script applies a comprehensive set of recommended optimizations:
-
-### What It Does:
-1. Applies appearance tweaks (disables transparency, animations)
-2. Applies CPU priority optimizations
-3. Applies service optimizations
-4. Applies SSD optimizations (if SSD detected)
-5. Applies telemetry reductions
-6. Applies visual effects optimizations for performance
-7. Sets power plan to high performance
-
-### Usage:
-1. Right-click the file and select "Run as administrator"
-2. The script will apply tweaks and show progress
-3. A restart may be required for all changes to take effect
-4. To revert changes, manually apply the corresponding "Revert Changes" registry files
-
-### Safety Features:
-- Creates a system restore point before making changes (if system protection is enabled)
-- Logs changes made for review
-- Checks for SSD presence before applying SSD-specific tweaks
-
-## Recommendations by Use Case
-
-### Gaming Systems:
-1. Apply CPU Priority Games Priority.reg
-2. Apply QuickCPU power plan
-3. Disable transparency and visual effects
-4. Optimize SSD (if applicable)
-5. Consider disabling unnecessary services
-6. Keep RAM compression enabled unless you have 16GB+ RAM
-
-### Workstation/Productivity:
-1. Apply Windows Priority (balanced) or slight performance tweak
-2. Apply SSD optimizations
-3. Keep visual effects if preferred (minor performance impact)
-4. Apply telemetry reductions for privacy
-5. Keep security mitigations enabled
-
-### Low-End Systems (<8GB RAM):
-1. Apply all appearance tweaks (disable transparency, animations)
-2. Apply service optimizations
-3. Apply telemetry reductions
-4. Consider disabling RAM compression if experiencing high CPU usage
-5. Keep page file managed by system
-6. Use MemReduce to actively manage memory usage
-
-### Privacy-Focused Systems:
-1. Apply all telemetry tweaks
-2. Disable Cortana and data collection features
-3. Consider disabling Windows Update if not using Microsoft Store
-4. Use local account instead of Microsoft account
-5. Apply service optimizations to reduce background data transmission
-6. Consider using the unattended installation for maximum privacy
-
-## Important Notes
-
-### Backup Recommendations:
-- Always create a system restore point before applying tweaks
-- Backup important data before making system changes
-- Some tweaks may affect specific software compatibility
-
-### Compatibility:
-- Tweaks are tested on Windows 10 version 1809 and later
-- Tweaks are tested on Windows 11 version 21H2 and later
-- Enterprise editions may have additional restrictions via group policy
-
-### Reverting Changes:
-- Each tweak folder includes a "Revert Changes" file
-- The Apply Optimizations.bat script is not directly reversible - use individual revert files
-- System restore point created by the script can be used to revert all changes
-
-### Monitoring Effects:
-- Use Task Manager to monitor CPU, memory, and disk usage before and after
-- Use Resource Monitor for detailed service and process analysis
-- Benchmark gaming performance with tools like 3DMark or FPS counters in games
+This document provides a highly detailed, comprehensive guide to all system modifications, registry tweaks, and shell scripts located in the `Tweaks/` directory. These configurations are designed to optimize Windows 10 & 11 for maximum responsiveness, privacy, and gaming efficiency.
 
 ---
 
-*For questions or suggestions, please open an issue in the repository.*
-*Last updated: May 2026*
+## 📂 Folder Directory Structure
+The `Tweaks/` directory is organized into functional categories to allow targeted optimizations:
+1. [**Appearance**](#1-appearance-tweaks): Interface adjustments, themes, and Cortana.
+2. [**Background**](#2-background-tweaks): Power and execution control for background tasks.
+3. [**Browser**](#3-browser-tweaks): Optimizing Microsoft Edge and disabling browser preloads.
+4. [**Display**](#4-display-tweaks): Custom GPU assignments, Auto SR, HDR, and Windowed Optimizations.
+5. [**Gaming**](#5-gaming-tweaks): Windows Game Mode configurations.
+6. [**Network**](#6-network-tweaks): Delivery Optimization bandwidth capping and P2P updates.
+7. [**Privacy**](#7-privacy-tweaks): Core application permissions lockdowns.
+8. [**Recursos & Resources**](#8-recursos-resources-standard-tweaks): Hardware priority tweaks, mitigations, custom power plans, SSD tunings, RAM cleaners, and services.
+9. [**Startup**](#9-startup-tweaks): Trimming auto-start software.
+10. [**Storage**](#10-storage-tweaks): Safe temporary folder cleaners and Storage Sense toggles.
+11. [**Storage-Aggressive**](#11-storage-aggressive-tweaks): System component store and WinSXS cleanups via DISM.
+12. [**Troubleshooting**](#12-troubleshooting-tweaks): Diagnostic Clean Boot management.
+13. [**Apply Optimizations Script**](#13-apply-optimizationsbat-walkthrough): The main interactive control suite.
+
+---
+
+## 1. Appearance Tweaks
+*   **Path**: `Tweaks/Appearance/`
+*   **Purpose**: Disables taxing visual transitions and unnecessary system components to free up CPU and GPU cycles on older systems.
+
+### Available Registry Tweaks
+*   `Dark Theme.reg` / `Light Theme.reg`: Swaps the Windows system and app themes between dark and light modes.
+*   `Disable Transparency.reg` / `Enable Transparency.reg`: Turns off transparency effects on the taskbar, start menu, and action center. Disabling transparency significantly reduces GPU load in windowed modes.
+*   `Disable Action Center.reg` / `Enable Action Center.reg`: Deactivates the system notifications tray.
+*   `Disable Cortana.reg` / `Enable Cortana.reg`: Fully blocks the Cortana digital assistant search indexing and background services.
+
+> [!TIP]
+> Disabling transparency and transitions is highly recommended for legacy systems with integrated graphics cards (such as Intel HD Graphics) to prevent interface stuttering.
+
+---
+
+## 2. Background Tweaks
+*   **Path**: `Tweaks/Background/`
+*   **Purpose**: Restricts system processes from spinning up background activities when not in use.
+
+### Active Utility
+*   `Manage Background Apps.ps1`: A PowerShell script that configures group policies and registry flags to stop Microsoft Store applications from executing background loops when closed.
+*   **Registry Affected**: 
+    `HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications`
+    `GlobalUserDisabled = 1`
+
+---
+
+## 3. Browser Tweaks
+*   **Path**: `Tweaks/Browser/`
+*   **Purpose**: Prevents telemetry and keeps the Edge browser from eating up memory behind the scenes.
+
+### Available Registry Tweaks
+*   `Configure Edge Performance.reg`: Stops Microsoft Edge from running background extensions and preloading tabs during startup. It also disables built-in shopping helpers and diagnostic tracking.
+*   `Revert Edge Performance (Restore).reg`: Restores default Microsoft Edge preloading features.
+
+---
+
+## 4. Display Tweaks
+*   **Path**: `Tweaks/Display/`
+*   **Purpose**: Minimizes graphics latency, configures high-refresh layouts, and guides super-resolution setup.
+
+### Components
+*   `Enable Windowed Game Optimizations.reg` / `Disable Windowed Game Optimizations (Restore).reg`: Enables flip model presentation for windowed DirectX 10/11 games, improving latency and unlocking features like Auto HDR.
+*   `Manage GPU Preference.ps1`: Automates setting specific gaming binaries to "High Performance" GPU preference via Windows Graphics settings.
+*   `Open Graphics Settings.bat`: Quick launcher to open the Windows 10/11 graphics properties control directly.
+*   `Auto SR Settings Guide.txt` (Automatic Super Resolution): Setup manual detailing hardware requirements (Copilot+ PCs, Snapdragon processors) and system settings for AI-powered game upscaling.
+*   `HDR Settings & Keyboard Shortcut.txt`: Notes on enabling Windows HDR and using `Win + Alt + B` to instantly toggle HDR on/off to avoid washed-out colors on standard desktops.
+
+---
+
+## 5. Gaming Tweaks
+*   **Path**: `Tweaks/Gaming/`
+*   **Purpose**: Optimizes OS process scheduling for active full-screen video games.
+
+### Available Registry Tweaks
+*   `Enable Game Mode.reg` / `Disable Game Mode (Restore).reg`: Toggles Windows Game Mode. When active, it prioritizes CPU resources for the foreground game, minimizes background notification interruptions, and suspends background updates during play.
+
+---
+
+## 6. Network Tweaks
+*   **Path**: `Tweaks/Network/`
+*   **Purpose**: Frees up local network bandwidth and stops background update uploads.
+
+### Available Registry Tweaks
+*   `Cap Delivery Optimization Bandwidth.reg` / `Remove Bandwidth Caps (Restore).reg`: Caps background download/upload bandwidth used for Windows Update delivery optimizations to prevent network spikes while gaming.
+*   `Disable Peer to Peer Updates.reg` / `Enable Peer to Peer Updates (Restore).reg`: Prevents Windows from uploading updates to other PCs on the internet (which severely chokes home upload bandwidth).
+
+---
+
+## 7. Privacy Tweaks
+*   **Path**: `Tweaks/Privacy/`
+*   **Purpose**: System-wide blockades to prevent background telemetry transmission and device snooping.
+
+### Available Registry Tweaks
+*   `Disable App Metadata Access.reg` / `Enable App Metadata Access.reg`: Stops Windows from scanning app configurations.
+*   `Disable Camera.reg` / `Enable Camera.reg`: Blocks camera sensor access for standard desktop/UWP apps globally.
+*   `Disable Location.reg` / `Enable Location.reg`: Deactivates Windows Location tracking services.
+*   `Disable Microphone.reg` / `Enable Microphone.reg`: Turns off microphone capture access globally.
+*   `Disable Notifications.reg` / `Enable Notifications.reg`: Blocks UWP system toast notification popups.
+
+---
+
+## 8. Recursos & Resources (Standard Tweaks)
+*   **Path**: `Tweaks/Recursos/` & `Tweaks/Resources/`
+*   **Purpose**: The traditional performance tweaks folder.
+
+### Key Components
+
+#### CPU Priorities
+*   `Games Priority.reg`: Modifies the Multimedia Class Scheduler (MMCSS) to allocate up to 80% CPU resources directly to active games and applications.
+*   `Windows Priority.reg` / `Revert Changes.reg`: Restores balanced desktop thread priority parameters.
+*   **Registry Paths Modifed**:
+    `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games`
+
+#### CPU Mitigations
+*   `InSpectre.exe`: A lightweight diagnostic utility that allows the safe enabling/disabling of Meltdown and Spectre hardware mitigations.
+    *   *Mitigations OFF*: Restores lost CPU performance (highly noticeable on 8th Gen Intel processors and older), but exposes the system to theoretical security exploits.
+    *   *Mitigations ON*: Maximum security configuration, but reduces disk read/write throughput and raw execution speeds.
+
+#### CPU Power Plans
+*   `QuickCPU.pow`: A custom-engineered system power configuration optimized to minimize CPU core parking, maintain high frequency scales longer, and disable standard power savings when processing active loads.
+*   `Aplicar.bat` / `Apply.bat`: Shell scripts to import and active the custom power plan via command line.
+    ```cmd
+    powercfg -import "%~dp0QuickCPU.pow"
+    ```
+
+#### SSD Optimizations
+*   `Optimizar SSD.reg` / `Revert Changes.reg`: Applies SSD-specific settings:
+    *   Enables **TRIM** to ensure even wear on NAND flash cells.
+    *   Disables **Superfetch / Prefetch** (redundant on solid-state drives, saves excess disk write cycles).
+    *   Optimizes standard disk write caching values.
+
+#### Memory Reduction
+*   `Mem Reduct RAM` (Portable): A light memory management utility.
+    *   Cleans system caches, working sets, and pagefiles on command.
+    *   Configures cleanups when memory saturation crosses specific benchmarks (e.g., 85%).
+    *   Essential for legacy hardware configurations equipped with less than 8GB of RAM.
+
+#### RAM Compression
+*   `Disable Compression.cmd` / `Revert Changes.bat`: Toggles Windows virtual memory compression.
+    *   *Compression Disabled*: Eliminates CPU processing latency associated with compressing inactive RAM pages. Best for systems with 16GB+ RAM.
+    *   *Compression Enabled*: Compress pages to conserve capacity. Recommended for systems with 4GB/8GB RAM to prevent immediate swapfile thrashing on slow HDDs.
+
+#### System Services
+*   `Optimize Services.reg`: Disables or sets to Manual a wide array of legacy, enterprise, and telemetry-related background services (e.g., Bluetooth, print spooling if unused, faxing, remote registries).
+
+#### Telemetry & Data Collection
+*   `Disable Telemetry.reg`: Blocks telemetry routines, CEIP diagnostic collection, and Windows feedback prompts.
+
+---
+
+## 9. Startup Tweaks
+*   **Path**: `Tweaks/Startup/`
+*   **Purpose**: Manages software launch profiles during system startup.
+
+### Active Utility
+*   `Manage Startup Apps.ps1`: PowerShell script to scan, identify, and disable heavy third-party auto-starting applications in registry locations like:
+    `HKLM\Software\Microsoft\Windows\CurrentVersion\Run`
+    `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
+
+---
+
+## 10. Storage Tweaks
+*   **Path**: `Tweaks/Storage/`
+*   **Purpose**: Automates standard garbage collection and frees up wasted gigabytes.
+
+### Tools
+*   `Enable Storage Sense.reg` / `Disable Storage Sense (Restore).reg`: Toggles Windows Storage Sense utility, which automatically deletes temporary files, clears the Recycle Bin, and cleans downloaded items at set intervals.
+*   `Safe Temporary Cleanup.bat`: A non-destructive shell script that purges the following cache directories safely:
+    *   `%temp%` (User Temporary directory)
+    *   `C:\Windows\Temp` (System Temporary directory)
+    *   `C:\Windows\Prefetch` (Prefetch system files)
+
+---
+
+## 11. Storage-Aggressive Tweaks
+*   **Path**: `Tweaks/Storage-Aggressive/`
+*   **Purpose**: Sweeps system files and component stores for deeper debloating.
+
+### Active Utility
+*   `Deep Component Cleanup (Aggressive).bat`: A script that must be run as Administrator. It uses the Deployment Image Servicing and Management (DISM) tool to purge superseded system files, unused component packages, and legacy update backups from the `WinSXS` folder.
+*   **Commands executed**:
+    ```cmd
+    Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
+    ```
+    > [!WARNING]
+    > Running this aggressive component store cleanup removes old update uninstall files permanently. You will not be able to uninstall current updates once completed.
+
+---
+
+## 12. Troubleshooting Tweaks
+*   **Path**: `Tweaks/Troubleshooting/`
+*   **Purpose**: Restores system variables back to isolated baseline states.
+
+### Tools
+*   `Clean Boot Manager.ps1`: A PowerShell diagnostic utility that disables all non-Microsoft startup applications and services, creating an isolated boot profile. Extremely useful for identifying game-crashing software components or overlay conflicts.
+
+---
+
+## 13. Apply Optimizations.bat Walkthrough
+*   **Path**: `Tweaks/Apply Optimizations.bat`
+*   **Purpose**: The central menu interface.
+
+This interactive batch file acts as a centralized dashboard. Right-click and run as Administrator to access these options:
+
+1.  **Apply Recommended Optimizations**:
+    *   Alters the **svchost split threshold** according to system RAM to prevent excessive process subdivisions.
+    *   Disables Wi-Fi Sense hotspot reporting.
+    *   Deactivates update-related background tasks and Windows Defender telemetry routines.
+    *   Applies standard MMCSS gaming thread priorities.
+    *   Configures graphics scheduler Mode to HwSchMode = 2.
+    *   Sets slow, telemetry-heavy services to Manual or Disabled.
+2.  **System Optimizations**: A sub-menu to apply localized tweaks such as:
+    *   Disabling full-screen DXGI game optimizations.
+    *   Disabling background execution apps.
+    *   Disabling Telemetry registries.
+    *   Reducing visual effects quality parameters.
+    *   Applying MMCSS gaming priority.
+    *   Setting active game processes (like CS:GO, CS2, Fortnite, Minecraft, GTA V) to high performance CPU scheduling execution properties.
+3.  **Create Restore Point**: Highly recommended first step. It runs PowerShell to enable system restores and establish a safe baseline bookmark named "Optimizer Script".
+4.  **Delete Temporary Files**: Automatically cleans the user temp, system temp, and prefetch storage directories.
+5.  **Disable Windows Defender**: Menu options to switch active Windows Defender, Security Health, and real-time monitoring services off.
+6.  **Disable Windows Update**: Menu to pause and stop update schedulers and update self-healing dll dependencies.
+7.  **About the Optimizer**: Credit listing and licensing summaries.
+
+---
+
+## 💡 Summary Recommendations by Use Case
+
+### 🎮 Gaming Optimization
+-   Create a restore point (Menu Option 3).
+-   Run Option 1 (Apply Recommended Optimizations) to reduce MMCSS process delays and optimize service responsiveness.
+-   Import `Tweaks/Recursos/CPU Power Plan/QuickCPU.pow` and active the profile.
+-   Apply `Tweaks/Display/Enable Windowed Game Optimizations.reg`.
+-   Verify sensor temperatures using diagnostics inside [**Hardware Monitoring**](HARDWARE.md).
+
+### 💻 Legacy / Low-End Hardware (<8GB RAM)
+-   Apply `Tweaks/Appearance/Disable Transparency.reg` to lighten graphics processor loads.
+-   Keep Virtual RAM Compression **Enabled** (`Tweaks/Recursos/RAM Compression/Revert Changes.bat`) to prevent early HDD paging.
+-   Run `Tweaks/Recursos/Mem Reduct RAM/memreduct.exe` to manage memory usage.
+-   Apply services debloating via `Tweaks/Recursos/Services/Optimize Services.reg`.
+
+### 🔒 Maximum System Privacy
+-   Apply `Tweaks/Recursos/Telemetry/Disable Telemetry.reg` and `Tweaks/Privacy/Disable App Metadata Access.reg`.
+-   Run `Tweaks/Background/Manage Background Apps.ps1` to stop closed applications from executing in the background.
+-   Lock application permissions using the scripts in `Tweaks/Privacy/`.
+-   Consult the [**Web Browsers Guide**](BROWSERS.md) to choose privacy-respecting navigation software.
