@@ -23,14 +23,14 @@
 
 ```text
 ╔═══════════════════════════════════════════════════════════════════╗
-║                  S Y S T E M   S T A T U S : O N L I N E          ║
+║                 S Y S T E M   S T A T U S : O N L I N E           ║
 ╠═══════════════════════════════════════════════════════════════════╣
-║  [+] PERFORMANCE MODULES     ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰  ACTIVE    ║
-║  [+] GAMING OPTIMIZATIONS    ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰  ENABLED   ║
-║  [+] PRIVACY HARDENING       ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰  ACTIVE    ║
-║  [+] RESTORE ENGINE          ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰  READY     ║
-║  [+] WINDOWS 10 INTEGRATION  ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰  VERIFIED  ║
-║  [+] WINDOWS 11 INTEGRATION  ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰  VERIFIED  ║
+║  [+] PERFORMANCE MODULES     [██████████████████████]  ACTIVE     ║
+║  [+] GAMING OPTIMIZATIONS    [██████████████████████]  ENABLED    ║
+║  [+] PRIVACY HARDENING       [██████████████████████]  ACTIVE     ║
+║  [+] RESTORE ENGINE          [██████████████████████]  READY      ║
+║  [+] WINDOWS 10 INTEGRATION  [██████████████████████]  VERIFIED   ║
+║  [+] WINDOWS 11 INTEGRATION  [██████████████████████]  VERIFIED   ║
 ╚═══════════════════════════════════════════════════════════════════╝
 ```
 </div>
@@ -188,7 +188,8 @@ Our complete documentation exists as a beautifully crafted, live dashboard inter
 | :--- | :---: | :--- |
 | **Windows 10 (22H2)** | 🟢 VERIFIED | Native Full Support |
 | **Windows 11 (23H2)** | 🟢 VERIFIED | Native Full Support |
-| **Windows 11 (24H2)** | 🟡 TESTING | Core Modules Verified |
+| **Windows 11 (24H2)** | 🟢 VERIFIED | Native Full Support |
+| **Windows 11 (25H2)** | 🟢 VERIFIED | Native Full Support |
 | **Copilot+ Devices** | 🟡 PARTIAL | ARM64 Analysis Ongoing |
 | **HDR Calibration** | 🟢 VERIFIED | Display Tuned |
 | **Auto SR Support** | 🟢 VERIFIED | Hardware Accelerated |
@@ -218,6 +219,13 @@ We welcome pull requests from fellow system engineers and optimization enthusias
 ---
 
 ## ⬛ CREDITS
+
+> **Farhan // System Architect**
+> *Mission:* Eradicate software bloat. Maximize raw hardware performance. Restore absolute user control.
+>
+> 📡 **GitHub:** [@YTxFSGAMERz](https://github.com/YTxFSGAMERz)  
+> 📡 **Telegram Network:** [Access News Feed](https://t.me/YTxFSGAMERz)  
+> 📡 **Direct WhatsApp COMMS:** [Initialize Connection](https://wa.me/917778906798)
 
 Engineered, tested, and maintained by **Farhan**. 
 Leveraging the power of the open-source community to keep hardware fast, clean, and private.
