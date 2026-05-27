@@ -1,4 +1,4 @@
-# ⚡ Windows Optimisations Documentation ⚡
+# Windows Optimisations
 
 <p align="center">
   <img src="https://img.shields.io/github/stars/YTxFSGAMERz/Windows-Optimisations?style=for-the-badge&color=00bcd4&logo=github" alt="Stars">
