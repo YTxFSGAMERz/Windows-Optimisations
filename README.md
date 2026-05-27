@@ -18,7 +18,7 @@
 
 <br><br>
 
-<img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&w=1000&auto=format&fit=crop" alt="Cyber Dashboard" width="800" style="border-radius: 10px; box-shadow: 0 0 20px rgba(0,255,255,0.2);">
+<img src="docs/assets/banner.png" alt="Cyber Dashboard" width="800" style="border-radius: 10px; box-shadow: 0 0 20px rgba(0,255,255,0.2);">
 
 ---
 
