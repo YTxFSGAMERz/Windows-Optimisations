@@ -1,31 +1,98 @@
-# Extra Utilities
+# 🛠️ Extra Utilities Guide
 
-A collection of additional useful tools for system management, customization, and general use.
+The `Extra/` directory contains a curated selection of lightweight, high-performance utilities, custom system configurators, and network tuning applications designed to optimize your workspace and reduce systemic latency.
 
-## File Management
-- **7-Zip** (`7z2501-x64.exe`, `7z2501.exe`): High-performance file archiver with high compression ratio.
-- **WinRAR** (`winrar-x64-623.exe`): Popular file archiver with support for various formats.
-- **IObit Unlocker**: Resolves "cannot delete file" or "access denied" issues by unlocking files or folders held by other processes.
-- **Everything**: Extremely fast file search utility that indexes your drives for near-instant results.
+---
 
-## System Customization & Optimization
-- **Winaero Tweaker**: Comprehensive tool for customizing various hidden Windows settings and appearance.
-- **TCP Optimizer**: Advanced tool for optimizing internet connection settings by adjusting registry parameters.
-- **Mem Reduct**: Lightweight memory management application to monitor and clean system memory.
-- **MSI Utility V3**: Tool to enable Message Signaled-Based Interrupts for better system responsiveness and reduced latency.
-- **Interrupt Affinity Policy Tool**: Allows setting the interrupt affinity for specific hardware devices.
+## 🗃️ 1. File Archiving & Management
 
-## System Monitoring & Debugging
-- **Process Explorer**: Advanced task manager and system monitor that shows detailed information about running processes.
-- **ServiWin**: Lists all installed drivers and services on your system and allows you to stop, start, or change their startup type.
+### 7-Zip (`7z2501-x64.exe` / `7z2501.exe`)
+*   **Purpose**: Open-source, high-efficiency file archiver with a high compression ratio in the `.7z` format.
+*   **Why Use**: Completely free of advertising and nag-screens. Consumes significantly less memory during compression/decompression compared to standard WinZIP.
 
-## Utilities
-- **Rufus**: Reliable tool for creating bootable USB installation media (ISO to USB).
-- **AnyDesk**: Fast and secure remote desktop software for remote assistance or access.
-- **CRU (Custom Resolution Utility)**: Allows you to define custom resolutions and refresh rates for your monitor.
-- **Steam**: Installer for the Steam gaming platform.
-- **Lightshot**: Simple and convenient tool for taking and sharing screenshots.
+### WinRAR (`winrar-x64-623.exe`)
+*   **Purpose**: High-fidelity file archiver with native support for the `.rar` format. Excellent for extracting split archives.
 
-## Miscellaneous
-- **Tetris_GameBoy.exe**: A classic Tetris game for a quick break.
-- **uwd.exe**: Universal Windows Decrapifier or similar utility for removing pre-installed bloatware.
+### IObit Unlocker (`IObit Unlocker/`)
+*   **Purpose**: Resolves issues where files or folders cannot be deleted because they are locked by background system services.
+*   **How to Use**: Right-click the locked file, select **IObit Unlocker**, and click **Unlock & Delete** or **Unlock & Rename**.
+
+### Everything (`Everything-1.4.1.1024.x86-Setup.exe`)
+*   **Purpose**: Fast search utility that indexes your system's NTFS file structures in seconds. It provides near-instant search results as you type, consuming negligible background memory.
+
+---
+
+## ⚡ 2. Network & System Latency Tuning
+
+### TCP Optimizer (`TCPOptimizer.exe`)
+*   **Purpose**: A portable configurator designed to tune your TCP/IP parameters in the registry.
+*   **Optimal Gaming Setup**:
+    1. Right-click `TCPOptimizer.exe` and select **Run as administrator**.
+    2. Drag the slider at the top to match your maximum internet connection speed.
+    3. Select the **Optimal** radio button at the bottom.
+    4. Click **Apply Changes**, check the backup box, and restart the PC to optimize MTU, TCP Window Auto-Tuning, and Nagle's Algorithm.
+
+### MSI Utility V3 (`MSI Utility V3.exe`)
+*   **Purpose**: Configures devices to use **Message Signaled-Based Interrupts (MSI)** instead of legacy Line-Based Interrupts (Pin-Based).
+
+> [!IMPORTANT]
+> **MSI Optimization Steps (Reduces Audio Crackling & GPU Latency)**:
+> 1. Right-click `MSI Utility V3.exe` and select **Run as administrator**.
+> 2. Locate your primary **Graphics Card (GPU)** in the hardware list.
+> 3. Check the box in the **MSI** column for your GPU.
+> 4. Change the **Interrupt Priority** column from "Undefined" or "Normal" to **High**.
+> 5. Click **Apply** in the top right corner.
+> 6. *Warning*: Do not set priority to High for non-essential components (like USB or network adapters) as this can lead to system instability.
+
+---
+
+## 🎨 3. System Customization
+
+### Winaero Tweaker (`Winaero Tweaker.exe`)
+*   **Purpose**: A comprehensive customization panel that allows you to safely toggle hidden Windows registry variables via a simple graphical interface.
+*   **Key Optimizations**:
+    *   Disable automatic driver updates via Windows Update.
+    *   Disable lock screen ads, telemetry, and preloaded apps.
+    *   Enable classic shell features and right-click menus on Windows 11.
+
+---
+
+## 🔍 4. System Monitoring & Diagnostics
+
+### Process Explorer (`Process Explorer.exe`)
+*   **Purpose**: An advanced Task Manager replacement by Sysinternals.
+*   **Why Use**: Displays detailed process trees, lets you view active DLL handles, maps CPU thread usage inside individual tasks, and integrates with VirusTotal to check running processes for malware.
+
+### ServiWin (`serviwin.exe`)
+*   **Purpose**: Displays a clean, tabular list of all installed drivers and system services on your PC. It allows you to instantly stop, start, or change service startup configurations without navigating the Windows Services utility.
+
+---
+
+## ⚙️ 5. General Utilities
+
+### Rufus (`rufus-3.22p.exe`)
+*   **Purpose**: Highly reliable utility to format and create bootable USB installation media from ISO images (used for clean unattended OS installations).
+
+### AnyDesk (`AnyDesk.exe`)
+*   **Purpose**: Fast, lightweight remote desktop software used to obtain remote assistance or manage secondary PCs on your network.
+
+### Custom Resolution Utility - CRU (`CRU.exe`)
+*   **Purpose**: Bypasses EDID display limits to create custom desktop resolutions and refresh rates.
+
+> [!TIP]
+> **Using CRU to Overclock Monitors**:
+> 1. Open `CRU.exe` as Administrator.
+> 2. Select your active display from the dropdown menu at the top.
+> 3. Click **Add...** under the *Detailed resolutions* box.
+> 4. Keep settings on "Automatic" and increase the refresh rate incrementally (e.g., from 60Hz to 74Hz). Click OK.
+> 5. Run the included `restart.exe` (or `restart64.exe`) inside the CRU folder to reset the graphics driver.
+> 6. Right-click Desktop > Display Settings > Advanced Display and change your refresh rate to test stability.
+
+### Lightshot (`Lightshot.exe`)
+*   **Purpose**: Lightweight screenshot program. It overrides the `Print Screen` key to allow custom cropping, highlighting, and immediate cloud uploading.
+
+### Steam (`SteamSetup.exe`)
+*   **Purpose**: Installer for the Valve Steam gaming platform.
+
+### Tetris GameBoy (`Tetris_GameBoy.exe`)
+*   **Purpose**: A retro Tetris simulator. Great for checking system controller latency and responsiveness.
