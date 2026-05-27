@@ -4,9 +4,15 @@
   <a href="https://windows-optimizations.netlify.app/">
     <img src="https://img.shields.io/badge/LIVE_WEBSITE-Visit_Now-00bcd4?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Website">
   </a>
-  <img src="https://img.shields.io/github/stars/YTxFSGAMERz/Windows-Optimisations?style=for-the-badge&color=00bcd4&logo=github" alt="Stars">
-  <img src="https://img.shields.io/github/forks/YTxFSGAMERz/Windows-Optimisations?style=for-the-badge&color=00bcd4&logo=github" alt="Forks">
-  <img src="https://img.shields.io/github/license/YTxFSGAMERz/Windows-Optimisations?style=for-the-badge&color=00bcd4" alt="License">
+  <a href="https://github.com/YTxFSGAMERz/Windows-Optimisations" target="_blank">
+    <img src="https://img.shields.io/github/stars/YTxFSGAMERz/Windows-Optimisations?style=for-the-badge&color=00bcd4&logo=github" alt="Stars">
+  </a>
+  <a href="https://github.com/YTxFSGAMERz/Windows-Optimisations/fork" target="_blank">
+    <img src="https://img.shields.io/github/forks/YTxFSGAMERz/Windows-Optimisations?style=for-the-badge&color=00bcd4&logo=github" alt="Forks">
+  </a>
+  <a href="https://github.com/YTxFSGAMERz/Windows-Optimisations/blob/master/LICENSE" target="_blank">
+    <img src="https://img.shields.io/github/license/YTxFSGAMERz/Windows-Optimisations?style=for-the-badge&color=00bcd4" alt="License">
+  </a>
 </p>
 
 This repository contains a comprehensive, curated collection of high-performance tools, registry tweaks, automation scripts, and pre-configured setup templates designed to optimize Windows 10 & 11. Built with gaming performance, privacy, and system debloating as primary goals, this suite bridges the gap between hardware limitations and operating system overhead.
