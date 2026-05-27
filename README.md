@@ -1,7 +1,7 @@
 # ⚡ Windows Optimisations ⚡
 
 <p align="center">
-  <a href="https://idyllic-madeleine-715fde.netlify.app/">
+  <a href="https://windows-optimizations.netlify.app/">
     <img src="https://img.shields.io/badge/LIVE_WEBSITE-Visit_Now-00bcd4?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Website">
   </a>
   <img src="https://img.shields.io/github/stars/YTxFSGAMERz/Windows-Optimisations?style=for-the-badge&color=00bcd4&logo=github" alt="Stars">
@@ -60,7 +60,7 @@ Windows-Optimisations/
 
 ## 📖 Live Website & Documentation
 
-Visit our **[Premium Documentation Website](https://idyllic-madeleine-715fde.netlify.app/)** for a modern reading experience with sleek interactive guides.
+Visit our **[Premium Documentation Website](https://windows-optimizations.netlify.app/)** for a modern reading experience with sleek interactive guides.
 
 Alternatively, browse the documents directly:
 
