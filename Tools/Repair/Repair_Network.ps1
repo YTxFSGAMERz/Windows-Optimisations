@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Repair Network (Tools/Repair/Repair_Network.ps1)
 
@@ -44,5 +49,8 @@ Write-FrameworkLog -ModuleName "Repair" -Action "Completed Network Repair"
 Write-Host "`n================================================="
 Write-Host "[SUCCESS] Network stack has been repaired." -ForegroundColor Green
 Write-Host "Please REBOOT YOUR COMPUTER to complete the Winsock reset."
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

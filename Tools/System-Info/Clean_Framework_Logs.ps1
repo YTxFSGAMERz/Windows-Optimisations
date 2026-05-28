@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Clean Framework Logs (Tools/System-Info/Clean_Framework_Logs.ps1)
 
@@ -30,5 +35,8 @@ if (Test-Path $LogsDir) {
     Write-Host "`n[INFO] Logs directory does not exist yet." -ForegroundColor Yellow
 }
 
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

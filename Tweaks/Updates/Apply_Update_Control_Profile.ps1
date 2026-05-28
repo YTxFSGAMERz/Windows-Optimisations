@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Update Control Profile (Tweaks/Updates/Apply_Update_Control_Profile.ps1)
 
@@ -37,5 +42,8 @@ Write-Host "`n[2/2] Disabling Delivery Optimization (P2P)..." -ForegroundColor C
 Write-FrameworkLog -ModuleName "Updates" -Action "Completed Master Update Control Orchestrator" -Level WARNING
 
 Write-Host "`n[SUCCESS] Update Control Profile deployment complete!" -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

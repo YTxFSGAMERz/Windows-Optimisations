@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Install Windows Terminal (Tweaks/Developer/Install_Windows_Terminal.ps1)
 
@@ -38,3 +43,4 @@ Write-Host "`n[SUCCESS] Windows Terminal has been installed." -ForegroundColor G
 
 
 $null = Read-Host "Press Enter to exit..."
+

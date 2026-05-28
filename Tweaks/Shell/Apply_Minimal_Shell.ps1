@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Minimal Shell Orchestrator (Tweaks/Shell/Apply_Minimal_Shell.ps1)
 
@@ -44,5 +49,8 @@ Write-Host "`n[SUCCESS] Minimal Shell deployment complete!" -ForegroundColor Gre
 Write-Host "Restarting Windows Explorer to apply all visual changes immediately..." -ForegroundColor Yellow
 Stop-Process -Name "explorer" -Force
 
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Clean Tasks Profile (Tweaks/Tasks/Apply_Clean_Tasks_Profile.ps1)
 
@@ -34,5 +39,8 @@ Write-Host "`n[1/1] Disabling Telemetry Scheduled Tasks..." -ForegroundColor Cya
 Write-FrameworkLog -ModuleName "Tasks" -Action "Completed Master Clean Tasks Orchestrator" -Level WARNING
 
 Write-Host "`n[SUCCESS] Clean Tasks Profile deployment complete!" -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

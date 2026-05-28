@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Configure Developer Mode (Tweaks/Developer/Configure_Developer_Mode.ps1)
 
@@ -45,3 +50,4 @@ Write-Host "`n[SUCCESS] Windows Developer Mode has been enabled." -ForegroundCol
 
 
 $null = Read-Host "Press Enter to exit..."
+

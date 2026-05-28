@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Reset Network Stack (Tweaks/Network-Diagnostics/Reset_Network_Stack.ps1)
 
@@ -43,3 +48,4 @@ Write-Host "Please RESTART YOUR COMPUTER to finish the process." -ForegroundColo
 
 
 $null = Read-Host "Press Enter to exit..."
+

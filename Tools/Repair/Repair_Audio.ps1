@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Repair Audio (Tools/Repair/Repair_Audio.ps1)
 
@@ -40,5 +45,8 @@ Write-FrameworkLog -ModuleName "Repair" -Action "Completed Audio Stack Repair"
 Write-Host "`n================================================="
 Write-Host "[SUCCESS] Windows Audio stack has been restarted." -ForegroundColor Green
 Write-Host "If your game/app still has no sound, you may need to restart the app."
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

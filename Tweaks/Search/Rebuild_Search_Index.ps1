@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Rebuild Search Index (Tweaks/Search/Rebuild_Search_Index.ps1)
 
@@ -47,3 +52,4 @@ Write-Host "You can monitor the status in 'Indexing Options' in the Control Pane
 
 
 $null = Read-Host "Press Enter to exit..."
+

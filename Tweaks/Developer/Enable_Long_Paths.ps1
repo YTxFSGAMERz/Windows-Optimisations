@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Enable Long Paths (Tweaks/Developer/Enable_Long_Paths.ps1)
 
@@ -39,3 +44,4 @@ Write-Host "`n[SUCCESS] Long Paths have been enabled. A restart may be required 
 
 
 $null = Read-Host "Press Enter to exit..."
+

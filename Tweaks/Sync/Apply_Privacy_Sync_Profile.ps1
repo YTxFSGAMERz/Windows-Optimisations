@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Privacy Sync Profile (Tweaks/Sync/Apply_Privacy_Sync_Profile.ps1)
 
@@ -37,5 +42,8 @@ Write-Host "`n[2/2] Disabling Windows Settings Cloud Syncing..." -ForegroundColo
 Write-FrameworkLog -ModuleName "Sync" -Action "Completed Master Privacy Sync Orchestrator" -Level WARNING
 
 Write-Host "`n[SUCCESS] Privacy Sync Profile deployment complete!" -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

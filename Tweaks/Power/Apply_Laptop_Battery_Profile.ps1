@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Laptop Battery Profile (Tweaks/Power/Apply_Laptop_Battery_Profile.ps1)
 
@@ -44,5 +49,8 @@ Write-FrameworkLog -ModuleName "Power" -Action "Enabled USB Selective Suspend" -
 Write-FrameworkLog -ModuleName "Power" -Action "Completed Master Laptop Battery Orchestrator" -Level WARNING
 
 Write-Host "`n[SUCCESS] Laptop Battery Profile deployment complete!" -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

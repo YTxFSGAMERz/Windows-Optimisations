@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Backup Installed Drivers (Tweaks/Drivers/Backup_Installed_Drivers.ps1)
 
@@ -42,5 +47,8 @@ Write-FrameworkLog -ModuleName "Drivers" -Action "Completed third-party driver e
 Write-Host "`n================================================="
 Write-Host "[SUCCESS] Drivers have been exported safely." -ForegroundColor Green
 Write-Host "Backup Location: $ExportDir"
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Privacy Camera Profile (Tweaks/Camera/Apply_Privacy_Camera_Profile.ps1)
 
@@ -37,5 +42,8 @@ Write-Host "`n[2/2] Blocking Global App Camera Access..." -ForegroundColor Cyan
 Write-FrameworkLog -ModuleName "Camera" -Action "Completed Master Privacy Camera Orchestrator" -Level WARNING
 
 Write-Host "`n[SUCCESS] Privacy Camera Profile deployment complete!" -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Privacy Clipboard Profile (Tweaks/Clipboard/Apply_Privacy_Clipboard_Profile.ps1)
 
@@ -37,5 +42,8 @@ Write-Host "`n[2/2] Disabling Cloud Clipboard Syncing..." -ForegroundColor Cyan
 Write-FrameworkLog -ModuleName "Clipboard" -Action "Completed Master Privacy Clipboard Orchestrator" -Level WARNING
 
 Write-Host "`n[SUCCESS] Privacy Clipboard Profile deployment complete!" -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

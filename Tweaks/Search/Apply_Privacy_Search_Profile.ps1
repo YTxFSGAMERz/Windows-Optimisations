@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Privacy Search Profile (Tweaks/Search/Apply_Privacy_Search_Profile.ps1)
 
@@ -42,5 +47,8 @@ Write-Host "`n[SUCCESS] Privacy Search Profile deployment complete!" -Foreground
 Write-Host "Restarting Windows Explorer to apply search UI changes immediately..." -ForegroundColor Yellow
 Stop-Process -Name "explorer" -Force
 
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

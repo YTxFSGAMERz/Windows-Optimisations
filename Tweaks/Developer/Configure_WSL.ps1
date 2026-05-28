@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Configure WSL (Tweaks/Developer/Configure_WSL.ps1)
 
@@ -40,3 +45,4 @@ Write-Host "After rebooting, you can install a distro via 'wsl --install -d Ubun
 
 
 $null = Read-Host "Press Enter to exit..."
+

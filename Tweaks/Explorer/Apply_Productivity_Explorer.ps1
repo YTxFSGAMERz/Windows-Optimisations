@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Productivity Explorer Orchestrator (Tweaks/Explorer/Apply_Productivity_Explorer.ps1)
 
@@ -48,5 +53,8 @@ Write-Host "`n[SUCCESS] Productivity Explorer deployment complete!" -ForegroundC
 Write-Host "Restarting Windows Explorer to apply all visual changes immediately..." -ForegroundColor Yellow
 Stop-Process -Name "explorer" -Force
 
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

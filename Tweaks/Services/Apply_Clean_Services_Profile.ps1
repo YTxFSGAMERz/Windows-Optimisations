@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Clean Services Profile (Tweaks/Services/Apply_Clean_Services_Profile.ps1)
 
@@ -34,5 +39,8 @@ Write-Host "`n[1/1] Disabling Telemetry Background Services..." -ForegroundColor
 Write-FrameworkLog -ModuleName "Services" -Action "Completed Master Clean Services Orchestrator" -Level WARNING
 
 Write-Host "`n[SUCCESS] Clean Services Profile deployment complete!" -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Diagnostics Privacy Profile (Tweaks/Diagnostics/Apply_Diagnostics_Privacy_Profile.ps1)
 
@@ -37,5 +42,8 @@ Write-Host "`n[2/2] Disabling Tailored Experiences (Ads/Tips)..." -ForegroundCol
 Write-FrameworkLog -ModuleName "Diagnostics" -Action "Completed Master Diagnostics Privacy Orchestrator" -Level WARNING
 
 Write-Host "`n[SUCCESS] Diagnostics Privacy Profile deployment complete!" -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Repair Windows Update (Tools/Repair/Repair_Windows_Update.ps1)
 
@@ -48,5 +53,8 @@ Write-FrameworkLog -ModuleName "Repair" -Action "Completed Windows Update Repair
 Write-Host "`n================================================="
 Write-Host "[SUCCESS] Windows Update caches have been reset." -ForegroundColor Green
 Write-Host "Try checking for updates again in Settings."
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Analyze Frame Timing & Queue Depth (Tools/Benchmark/Native/Analyze_Frame_Timing.ps1)
 
@@ -79,3 +84,4 @@ if ($MaxDiskQueue -gt 5) {
 Write-Host "`nFor absolute true frame-time variance analysis, we recommend installing Intel PresentMon." -ForegroundColor Yellow
 Write-Host "`nPress any key to exit..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+

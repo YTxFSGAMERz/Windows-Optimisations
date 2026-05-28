@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Uninstall OneDrive (Tweaks/Sync/Uninstall_OneDrive.ps1)
 
@@ -65,3 +70,4 @@ Write-Host "`n[SUCCESS] OneDrive has been uninstalled." -ForegroundColor Green
 
 
 $null = Read-Host "Press Enter to exit..."
+

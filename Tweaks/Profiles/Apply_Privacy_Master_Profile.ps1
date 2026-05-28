@@ -40,32 +40,35 @@ $TweaksDir = Join-Path -Path $PSScriptRoot -ChildPath "..\..\Tweaks"
 
 # 1. Core Diagnostics
 Write-Host "`n[1/6] Disabling OS Diagnostic Data & Ads..." -ForegroundColor Cyan
-& (Join-Path -Path $TweaksDir -ChildPath "Diagnostics\Apply_Diagnostics_Privacy_Profile.ps1")
+& (Join-Path -Path $TweaksDir -ChildPath "Diagnostics\Apply_Diagnostics_Privacy_Profile.ps1") -Force:$Force
 
 # 2. Services & Tasks
 Write-Host "`n[2/6] Disabling Telemetry Background Tasks & Services..." -ForegroundColor Cyan
-& (Join-Path -Path $TweaksDir -ChildPath "Services\Apply_Clean_Services_Profile.ps1")
-& (Join-Path -Path $TweaksDir -ChildPath "Tasks\Apply_Clean_Tasks_Profile.ps1")
+& (Join-Path -Path $TweaksDir -ChildPath "Services\Apply_Clean_Services_Profile.ps1") -Force:$Force
+& (Join-Path -Path $TweaksDir -ChildPath "Tasks\Apply_Clean_Tasks_Profile.ps1") -Force:$Force
 
 # 3. Data Sync
 Write-Host "`n[3/6] Disabling Cloud Sync & Activity History..." -ForegroundColor Cyan
-& (Join-Path -Path $TweaksDir -ChildPath "Sync\Apply_Privacy_Sync_Profile.ps1")
+& (Join-Path -Path $TweaksDir -ChildPath "Sync\Apply_Privacy_Sync_Profile.ps1") -Force:$Force
 
 # 4. Clipboard
 Write-Host "`n[4/6] Disabling Cloud Clipboard..." -ForegroundColor Cyan
-& (Join-Path -Path $TweaksDir -ChildPath "Clipboard\Apply_Privacy_Clipboard_Profile.ps1")
+& (Join-Path -Path $TweaksDir -ChildPath "Clipboard\Apply_Privacy_Clipboard_Profile.ps1") -Force:$Force
 
 # 5. Hardware Privacy
 Write-Host "`n[5/6] Restricting Camera Access..." -ForegroundColor Cyan
-& (Join-Path -Path $TweaksDir -ChildPath "Camera\Apply_Privacy_Camera_Profile.ps1")
+& (Join-Path -Path $TweaksDir -ChildPath "Camera\Apply_Privacy_Camera_Profile.ps1") -Force:$Force
 
 # 6. Apps Debloat
 Write-Host "`n[6/6] Removing Sponsored Bloatware..." -ForegroundColor Cyan
-& (Join-Path -Path $TweaksDir -ChildPath "Apps\Remove_Sponsored_Apps.ps1")
+& (Join-Path -Path $TweaksDir -ChildPath "Apps\Remove_Sponsored_Apps.ps1") -Force:$Force
 
 Write-FrameworkLog -ModuleName "Profiles" -Action "Completed Privacy Master Profile Deployment" -Level WARNING
 
 Write-Host "`n[SUCCESS] Maximum Privacy Master Profile deployment complete!" -ForegroundColor Green
 Write-Host "Please RESTART YOUR COMPUTER for all changes to take effect." -ForegroundColor Yellow
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

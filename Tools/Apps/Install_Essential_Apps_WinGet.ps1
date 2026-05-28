@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Install Essential Apps via WinGet (Tools/Apps/Install_Essential_Apps_WinGet.ps1)
 
@@ -52,3 +57,4 @@ Write-Host "================================================="
 Write-Host "[SUCCESS] All essential applications have been processed!" -ForegroundColor Green
 Write-Host "Press any key to exit..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+

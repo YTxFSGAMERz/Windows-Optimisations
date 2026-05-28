@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Restore All Defaults (Core/Restore/Restore_All_Defaults.ps1)
 
@@ -41,5 +46,8 @@ Remove-ItemProperty -Path "HKCU:\Software\Policies\Microsoft\Windows\Explorer" -
 Write-FrameworkLog -ModuleName "RestoreEngine" -Action "Completed Master Default Restoration"
 
 Write-Host "`n[SUCCESS] Critical systems restored to default. A reboot is highly recommended." -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

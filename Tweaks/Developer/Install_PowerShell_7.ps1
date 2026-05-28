@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Install PowerShell 7 (Tweaks/Developer/Install_PowerShell_7.ps1)
 
@@ -39,3 +44,4 @@ Write-Host "It will appear in your Start Menu as 'PowerShell' (black icon)."
 
 
 $null = Read-Host "Press Enter to exit..."
+

@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Max Performance Profile (Tweaks/Visual/Apply_Max_Performance_Profile.ps1)
 
@@ -43,5 +48,8 @@ Write-Host "`n[SUCCESS] Max Performance Visual Profile deployment complete!" -Fo
 Write-Host "Restarting Windows Explorer to apply all visual changes immediately..." -ForegroundColor Yellow
 Stop-Process -Name "explorer" -Force
 
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

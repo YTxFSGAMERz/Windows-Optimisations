@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Gaming GPU Profile (Tweaks/GPU/Apply_Gaming_GPU_Profile.ps1)
 
@@ -38,5 +43,8 @@ Write-FrameworkLog -ModuleName "GPU" -Action "Completed Master Gaming GPU Orches
 
 Write-Host "`n[SUCCESS] Gaming GPU Profile deployment complete!" -ForegroundColor Green
 Write-Host "A system reboot is highly recommended to apply GPU scheduling changes." -ForegroundColor Red
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

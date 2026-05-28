@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Check TRIM Status (Tweaks/Storage-Advanced/Check_TRIM_Status.ps1)
 
@@ -49,3 +54,4 @@ if ($Confirm -match 'y') {
 
 
 $null = Read-Host "Press Enter to exit..."
+

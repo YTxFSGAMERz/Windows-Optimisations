@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Rollback Last Changes (Core/Restore/Rollback_Last_Changes.ps1)
 
@@ -50,5 +55,8 @@ foreach ($File in $RegFiles) {
 
 Write-Host "`n[SUCCESS] Rollback completed from snapshot: $($LatestSnapshot.Name)" -ForegroundColor Green
 Write-Host "A restart is required to fully apply changes." -ForegroundColor Yellow
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+

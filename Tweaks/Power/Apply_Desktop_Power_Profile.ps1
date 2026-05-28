@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Desktop Power Profile (Tweaks/Power/Apply_Desktop_Power_Profile.ps1)
 
@@ -41,5 +46,8 @@ Write-Host "`n[3/3] Disabling USB Selective Suspend..." -ForegroundColor Cyan
 Write-FrameworkLog -ModuleName "Power" -Action "Completed Master Desktop Power Orchestrator" -Level WARNING
 
 Write-Host "`n[SUCCESS] Desktop Power Profile deployment complete!" -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+
