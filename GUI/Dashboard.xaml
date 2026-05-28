@@ -218,14 +218,14 @@
     </Window.Resources>
 
     <Grid Margin="20,30,20,20">
-        <!-- Add a custom drag area since we're using WindowChrome -->
-        <Border Grid.RowSpan="3" VerticalAlignment="Top" Height="30" Margin="-20,-30,-20,0" Background="Transparent" WindowChrome.IsHitTestVisibleInChrome="True"/>
-        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+
+        <!-- Add a custom drag area since we're using WindowChrome -->
+        <Border Grid.RowSpan="3" VerticalAlignment="Top" Height="30" Margin="-20,-30,-20,0" Background="Transparent" WindowChrome.IsHitTestVisibleInChrome="True"/>
 
         <!-- Header -->
         <StackPanel Grid.Row="0">
