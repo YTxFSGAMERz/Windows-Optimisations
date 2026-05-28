@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Repair Network (Tools/Repair/Repair_Network.ps1)
 
@@ -16,7 +21,7 @@ Write-Host "This will flush DNS, reset Winsock, release/renew IP,"
 Write-Host "and reset the TCP/IP stack to fix 'No Internet' issues."
 Write-Host "WARNING: You will briefly lose connection."
 Write-Host "Press 'Y' to begin or any other key to abort..."
-$Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character
+if (-not $Force) { $Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character } else { $Confirm = 'y' }
 
 if ($Confirm -notmatch 'y') {
     Write-FrameworkLog -ModuleName "Repair" -Action "Aborted Network Repair"
@@ -44,5 +49,8 @@ Write-FrameworkLog -ModuleName "Repair" -Action "Completed Network Repair"
 Write-Host "`n================================================="
 Write-Host "[SUCCESS] Network stack has been repaired." -ForegroundColor Green
 Write-Host "Please REBOOT YOUR COMPUTER to complete the Winsock reset."
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+
