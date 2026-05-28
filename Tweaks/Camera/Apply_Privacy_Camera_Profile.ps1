@@ -43,7 +43,9 @@ Write-FrameworkLog -ModuleName "Camera" -Action "Completed Master Privacy Camera
 
 Write-Host "`n[SUCCESS] Privacy Camera Profile deployment complete!" -ForegroundColor Green
 if (-not $Force) {
+    if (-not $Force) {
     Write-Host "Press any key to exit..."
-    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+}
 }
 
