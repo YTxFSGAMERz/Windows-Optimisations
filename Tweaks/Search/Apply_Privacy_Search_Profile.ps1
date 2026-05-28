@@ -48,7 +48,9 @@ Write-Host "Restarting Windows Explorer to apply search UI changes immediately..
 Stop-Process -Name "explorer" -Force
 
 if (-not $Force) {
+    if (-not $Force) {
     Write-Host "Press any key to exit..."
-    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+}
 }
 
