@@ -118,6 +118,7 @@ The repository will be structured into distinct, logical domains.
 - **Naming Convention:** `Action_Target.ps1` (e.g., `Disable_Copilot_Taskbar.ps1`, `Export_Current_Settings.ps1`).
 - **Metadata Headers:** Every script must declare its purpose, OS support, risk level, restore path, and required privileges.
 - **Validation:** Scripts must detect OS build, validate Admin rights, and capture the current state before modification.
+- **Automation:** All PowerShell scripts must support the `-Force` argument to bypass any interactive `Read-Host` or `ReadKey` pauses, enabling seamless integration into deployment pipelines.
 
 ### Logging & Restore Strategy
 - **Logging (`Logs/`):** Centralized `Write-FrameworkLog` function. Captures Timestamp, Module, Severity, OS Build, Old Value, and New Value. Format: `YYYY-MM-DD_ModuleName.log`.

@@ -33,6 +33,12 @@
 
     Broad-spectrum telemetry disablement, background app execution filters, and Edge telemetry cleanups.
 
+-   :material-robot-outline:{ .lg .middle } **Seamless Automation**
+
+    ---
+
+    All scripts now support zero-prompt unattended execution via the `-Force` flag. Build custom automated pipelines effortlessly.
+
 -   :material-auto-fix:{ .lg .middle } **Automated OS Setup**
 
     ---
