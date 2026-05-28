@@ -71,14 +71,14 @@ Instead, every modification strictly adheres to our engineering standards:
   
 | MODULE | DOMAIN | FUNCTIONALITY |
 | :--- | :--- | :--- |
-| 🎮 **GAMING** | Execution | Forces dedicated resources, disables background polling, lowers input latency |
-| 🛡️ **PRIVACY** | Security | Severs Microsoft telemetry connections, hardens microphone/camera permissions |
-| ⚡ **STARTUP** | Boot | Eliminates non-critical boot sequences for instantaneous OS initialization |
-| 🌐 **NETWORK** | Connectivity | Adjusts TCP parameters and Delivery Optimization caps for lower ping |
-| 📦 **STORAGE** | File System | Unlocks deep SSD optimizations and aggressive cache purges |
-| 🖥️ **DISPLAY** | Rendering | Tunes desktop window manager (DWM) and bypasses fullscreen optimizations |
-| 🔧 **DIAGNOSTICS** | Troubleshooting | Safe-mode toggles, component isolation, and diagnostic metric collection |
-| 🌙 **BROWSER** | Web | Eradicates background WebView/Edge bloat and background updating processes |
+| 🎮&nbsp;**GAMING** | Execution | Forces dedicated resources, disables background polling, lowers input latency |
+| 🛡️&nbsp;**PRIVACY** | Security | Severs Microsoft telemetry connections, hardens microphone/camera permissions |
+| ⚡&nbsp;**STARTUP** | Boot | Eliminates non-critical boot sequences for instantaneous OS initialization |
+| 🌐&nbsp;**NETWORK** | Connectivity | Adjusts TCP parameters and Delivery Optimization caps for lower ping |
+| 📦&nbsp;**STORAGE** | File System | Unlocks deep SSD optimizations and aggressive cache purges |
+| 🖥️&nbsp;**DISPLAY** | Rendering | Tunes desktop window manager (DWM) and bypasses fullscreen optimizations |
+| 🔧&nbsp;**DIAGNOSTICS** | Troubleshooting | Safe-mode toggles, component isolation, and diagnostic metric collection |
+| 🌙&nbsp;**BROWSER** | Web | Eradicates background WebView/Edge bloat and background updating processes |
 
 </div>
 
@@ -168,17 +168,16 @@ Our complete documentation exists as a beautifully crafted, live dashboard inter
 ## ⬛ USAGE GUIDE
 
 > [!NOTE]  
-> **ELEVATED PRIVILEGES REQUIRED:** All optimization modules must interface directly with the Windows Kernel, Registry, and Services layer. You must execute all scripts with Administrator rights.
+> **ELEVATED PRIVILEGES REQUIRED:** All optimization modules must interface directly with the Windows Kernel, Registry, and Services layer. The launcher will automatically request Administrator rights upon execution.
 
-1. **Clone the Framework**  
-   Download or clone the repository to your local drive. Extract all files to a secure directory (e.g., `C:\Optimizations`).
-2. **Initialize Backup Protocol**  
-   Open an Administrator PowerShell terminal and execute:  
-   `Checkpoint-Computer -Description "PRE-OPTIMIZATION-STATE"`
-3. **Engage Main Execution Interface**  
-   Navigate to the `Tweaks/` directory, right-click `Apply Optimizations.bat`, and select **Run as Administrator**.
-4. **Select Modules**  
-   Use the terminal UI to apply specific tuning modules based on your hardware target.
+1. **Download the Release**  
+   Download the latest ZIP release and extract all files to a secure directory (e.g., `C:\Optimizations`).
+2. **Launch the Dashboard**  
+   Double-click the `Start.bat` file located in the root directory. 
+3. **First-Run Initialization**  
+   The framework will gracefully initialize, offer to create a native Windows System Restore point for absolute safety, and place a shortcut on your Desktop.
+4. **Deploy Profiles**  
+   Use the stunning new WPF Dashboard to apply your desired Optimization Profiles, monitor real-time System Telemetry, or safely roll back any changes via the integrated Rollback Engine tab.
 
 ---
 

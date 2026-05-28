@@ -96,6 +96,11 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#2a2a2a"/>
                     <Setter Property="BorderBrush" Value="#00adb5"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="15" ShadowDepth="0" Color="#00adb5" Opacity="0.5"/>
+                        </Setter.Value>
+                    </Setter>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Background" Value="#00adb5"/>
@@ -110,14 +115,25 @@
             <Setter Property="Foreground" Value="#121212"/>
             <Setter Property="BorderBrush" Value="#00adb5"/>
             <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="#00adb5" Opacity="0.3"/>
+                </Setter.Value>
+            </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#00cfd9"/>
                     <Setter Property="BorderBrush" Value="#00cfd9"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="20" ShadowDepth="0" Color="#00cfd9" Opacity="0.8"/>
+                        </Setter.Value>
+                    </Setter>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Background" Value="#008a90"/>
                     <Setter Property="Foreground" Value="#ffffff"/>
+                    <Setter Property="Effect" Value="{x:Null}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -221,6 +237,16 @@
                     <DropShadowEffect BlurRadius="15" ShadowDepth="4" Direction="270" Color="#000000" Opacity="0.4"/>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#00adb5"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="15" ShadowDepth="0" Color="#00adb5" Opacity="0.4"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
 
@@ -323,12 +349,69 @@
             <TabItem Header="OBSERVABILITY">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="0,0,10,0">
                     <StackPanel Margin="0,10,0,10">
-                        <TextBlock Style="{StaticResource BodyText}" Text="Gather native telemetry to diagnose system bottlenecks, frame pacing, and scheduling behavior." Margin="0,0,0,20"/>
+                        <TextBlock Style="{StaticResource BodyText}" Text="Real-time native telemetry polling via WMI and Performance Counters. Monitoring system bottlenecks and scheduling behavior." Margin="0,0,0,20"/>
                         
-                        <Border Style="{StaticResource Card}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Left Column -->
+                            <StackPanel Grid.Column="0">
+                                <Border Style="{StaticResource Card}">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                            <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE909;" FontSize="20" Foreground="#00adb5" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                                            <TextBlock Style="{StaticResource Header2}" Text="System Interrupts (DPC/sec)" Margin="0" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBlock Name="TxtDpcLatency" Foreground="#ffffff" FontSize="36" FontWeight="Light" Text="--"/>
+                                        <TextBlock Style="{StaticResource BodyText}" Text="Hardware interrupt latency. Lower is better." Margin="0,5,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                                
+                                <Border Style="{StaticResource Card}">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                            <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE8B7;" FontSize="20" Foreground="#00adb5" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                                            <TextBlock Style="{StaticResource Header2}" Text="Available Memory (MB)" Margin="0" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBlock Name="TxtMemAvailable" Foreground="#ffffff" FontSize="36" FontWeight="Light" Text="--"/>
+                                        <TextBlock Style="{StaticResource BodyText}" Text="Unused physical memory." Margin="0,5,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                            
+                            <!-- Right Column -->
+                            <StackPanel Grid.Column="2">
+                                <Border Style="{StaticResource Card}">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                            <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE783;" FontSize="20" Foreground="#00adb5" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                                            <TextBlock Style="{StaticResource Header2}" Text="System Uptime" Margin="0" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBlock Name="TxtUptime" Foreground="#ffffff" FontSize="36" FontWeight="Light" Text="--"/>
+                                        <TextBlock Style="{StaticResource BodyText}" Text="Time since last cold boot." Margin="0,5,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                                
+                                <Border Style="{StaticResource Card}">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                            <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE8D8;" FontSize="20" Foreground="#00adb5" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                                            <TextBlock Style="{StaticResource Header2}" Text="Process Count" Margin="0" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBlock Name="TxtProcessCount" Foreground="#ffffff" FontSize="36" FontWeight="Light" Text="--"/>
+                                        <TextBlock Style="{StaticResource BodyText}" Text="Active background processes &amp; services." Margin="0,5,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                        <Border Style="{StaticResource Card}" Margin="0,0,0,10">
                             <StackPanel>
-                                <TextBlock Style="{StaticResource Header2}" Text="Native Telemetry Analytics" Margin="0,0,0,10"/>
-                                <TextBlock Style="{StaticResource BodyText}" Text="Measure DPC latency, CPU queue depth, boot time, and generate a complete HTML health report." Margin="0,0,0,20"/>
+                                <TextBlock Style="{StaticResource Header2}" Text="Observability Actions" Margin="0,0,0,10"/>
                                 
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -340,15 +423,15 @@
                                     <Button Name="BtnMeasureBootTime" Grid.Column="2" Content="Measure Boot Time" Height="40"/>
                                 </Grid>
                                 
-                                <Button Name="BtnGenerateReport" Style="{StaticResource AccentButton}" Content="Generate System Performance HTML Report" Height="40" Margin="10,10,10,0"/>
-                            </StackPanel>
-                        </Border>
-                        
-                        <Border Style="{StaticResource Card}">
-                            <StackPanel>
-                                <TextBlock Style="{StaticResource Header2}" Text="Third-Party Integrations" Margin="0,0,0,10"/>
-                                <TextBlock Style="{StaticResource BodyText}" Text="Scan for installed tools like Geekbench or CrystalDiskMark to hook into." Margin="0,0,0,20"/>
-                                <Button Name="BtnDetectThirdParty" Content="Detect Third-Party Benchmarks" Height="40"/>
+                                <Grid Margin="0,10,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="10"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Name="BtnGenerateReport" Grid.Column="0" Style="{StaticResource AccentButton}" Content="Generate Performance HTML Report" Height="40"/>
+                                    <Button Name="BtnDetectThirdParty" Grid.Column="2" Content="Detect Third-Party Benchmarks" Height="40"/>
+                                </Grid>
                             </StackPanel>
                         </Border>
                     </StackPanel>
@@ -374,6 +457,7 @@
                                         <ListView.View>
                                             <GridView>
                                                 <GridViewColumn Header="ID" DisplayMemberBinding="{Binding TransactionID}" Width="150"/>
+                                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" Width="150"/>
                                                 <GridViewColumn Header="Profile" DisplayMemberBinding="{Binding Profile}" Width="120"/>
                                             </GridView>
                                         </ListView.View>
