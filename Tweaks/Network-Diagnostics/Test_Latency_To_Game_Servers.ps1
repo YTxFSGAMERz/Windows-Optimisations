@@ -42,6 +42,8 @@ Write-Host "================================================="
 Write-Host "NOTE: If all servers show high ping (>100ms) or drop packets,"
 Write-Host "try running 'Reset_Network_Stack.ps1' or check your router."
 Write-Host "================================================="
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+}
 
