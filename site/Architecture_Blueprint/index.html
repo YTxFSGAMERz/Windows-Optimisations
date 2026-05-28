@@ -295,6 +295,28 @@
   
   
   
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Input_Latency_Myths/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Deep Dives
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
     <li class="md-tabs__item">
       <a href="../DRIVERS/" class="md-tabs__link">
         
@@ -1106,6 +1128,157 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Dives
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deep Dives
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Input_Latency_Myths/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Latency Myths
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Myths_and_Anti_Patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Myths and Anti-Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Registry_Reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registry Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../DRIVERS/" class="md-nav__link">
         
@@ -1821,6 +1994,7 @@
 <li><strong>Naming Convention:</strong> <code>Action_Target.ps1</code> (e.g., <code>Disable_Copilot_Taskbar.ps1</code>, <code>Export_Current_Settings.ps1</code>).</li>
 <li><strong>Metadata Headers:</strong> Every script must declare its purpose, OS support, risk level, restore path, and required privileges.</li>
 <li><strong>Validation:</strong> Scripts must detect OS build, validate Admin rights, and capture the current state before modification.</li>
+<li><strong>Automation:</strong> All PowerShell scripts must support the <code>-Force</code> argument to bypass any interactive <code>Read-Host</code> or <code>ReadKey</code> pauses, enabling seamless integration into deployment pipelines.</li>
 </ul>
 <h3 id="logging-restore-strategy">Logging &amp; Restore Strategy<a class="headerlink" href="#logging-restore-strategy" title="Permanent link">¶</a></h3>
 <ul>
