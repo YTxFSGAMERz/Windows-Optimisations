@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Measure Boot Time (Tools/Benchmark/Native/Measure_Boot_Time.ps1)
 
@@ -43,3 +48,4 @@ Write-Host "`n[INFO] 'Main Path' is the time taken to reach the desktop and be u
 Write-Host "[INFO] 'Total Boot Time' includes all background startup apps loading."
 Write-Host "`nPress any key to exit..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
