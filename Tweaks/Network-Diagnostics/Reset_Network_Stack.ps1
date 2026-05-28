@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Reset Network Stack (Tweaks/Network-Diagnostics/Reset_Network_Stack.ps1)
 
@@ -17,7 +22,7 @@ Write-Host "flush DNS, and reset Winsock. This is highly effective"
 Write-Host "for fixing random lag spikes or connectivity drops."
 Write-Host "WARNING: A reboot will be required after this completes."
 Write-Host "Press 'Y' to confirm or any other key to abort..."
-$Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character
+if (-not $Force) { $Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character } else { $Confirm = 'y' }
 
 if ($Confirm -notmatch 'y') {
     Write-FrameworkLog -ModuleName "Network" -Action "Aborted Network Stack Reset"
@@ -43,3 +48,4 @@ Write-Host "Please RESTART YOUR COMPUTER to finish the process." -ForegroundColo
 
 
 $null = Read-Host "Press Enter to exit..."
+
