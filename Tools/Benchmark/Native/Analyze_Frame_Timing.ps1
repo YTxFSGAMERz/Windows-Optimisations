@@ -83,5 +83,5 @@ if ($MaxDiskQueue -gt 5) {
 
 Write-Host "`nFor absolute true frame-time variance analysis, we recommend installing Intel PresentMon." -ForegroundColor Yellow
 Write-Host "`nPress any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
 
