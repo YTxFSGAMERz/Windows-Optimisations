@@ -214,6 +214,13 @@
             <Setter Property="CornerRadius" Value="8"/>
             <Setter Property="Padding" Value="20"/>
             <Setter Property="Margin" Value="0,0,0,20"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#2a2a2a"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="15" ShadowDepth="4" Direction="270" Color="#000000" Opacity="0.4"/>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
 
@@ -248,10 +255,18 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" Margin="0,0,20,0">
-                                    <TextBlock Style="{StaticResource Header2}" Text="Max Performance Profile" Margin="0,0,0,5"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE945;" FontSize="20" Foreground="#00adb5" Margin="0,15,10,10" VerticalAlignment="Center"/>
+                                        <TextBlock Style="{StaticResource Header2}" Text="Max Performance Profile" VerticalAlignment="Center"/>
+                                    </StackPanel>
                                     <TextBlock Style="{StaticResource BodyText}" Text="Target: Esports Gamers, Audio Producers, Latency Obsessives. Strips telemetry, disables mouse acceleration, enforces WASAPI exclusive mode."/>
                                 </StackPanel>
-                                <Button Name="BtnApplyMaxPerf" Grid.Column="1" Style="{StaticResource AccentButton}" Content="Apply Profile" Width="120" Height="40"/>
+                                <Button Name="BtnApplyMaxPerf" Grid.Column="1" Style="{StaticResource AccentButton}" Width="140" Height="40">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE768;" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Apply Profile" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
                             </Grid>
                         </Border>
 
@@ -263,10 +278,18 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" Margin="0,0,20,0">
-                                    <TextBlock Style="{StaticResource Header2}" Text="Balanced Creator Profile" Margin="0,0,0,5"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE8F1;" FontSize="20" Foreground="#00adb5" Margin="0,15,10,10" VerticalAlignment="Center"/>
+                                        <TextBlock Style="{StaticResource Header2}" Text="Balanced Creator Profile" VerticalAlignment="Center"/>
+                                    </StackPanel>
                                     <TextBlock Style="{StaticResource BodyText}" Text="Target: Developers, Video Editors, Power Users. Optimizes Explorer and removes UI bloat while retaining Windows Update and standard drivers."/>
                                 </StackPanel>
-                                <Button Name="BtnApplyBalanced" Grid.Column="1" Content="Apply Profile" Width="120" Height="40"/>
+                                <Button Name="BtnApplyBalanced" Grid.Column="1" Style="{StaticResource AccentButton}" Width="140" Height="40">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE768;" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Apply Profile" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
                             </Grid>
                         </Border>
 
@@ -278,10 +301,18 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" Margin="0,0,20,0">
-                                    <TextBlock Style="{StaticResource Header2}" Text="Enterprise Compliance Profile" Margin="0,0,0,5"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE773;" FontSize="20" Foreground="#00adb5" Margin="0,15,10,10" VerticalAlignment="Center"/>
+                                        <TextBlock Style="{StaticResource Header2}" Text="Enterprise Compliance Profile" VerticalAlignment="Center"/>
+                                    </StackPanel>
                                     <TextBlock Style="{StaticResource BodyText}" Text="Target: SysAdmins, Corporate Devices. Enforces HVCI/Memory Integrity, strict firewall rules, telemetry isolation, blocks consumer bloatware."/>
                                 </StackPanel>
-                                <Button Name="BtnApplyEnterprise" Grid.Column="1" Content="Apply Profile" Width="120" Height="40"/>
+                                <Button Name="BtnApplyEnterprise" Grid.Column="1" Style="{StaticResource AccentButton}" Width="140" Height="40">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE768;" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Apply Profile" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
                             </Grid>
                         </Border>
                     </StackPanel>
