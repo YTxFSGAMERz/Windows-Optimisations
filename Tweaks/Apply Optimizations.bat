@@ -46,14 +46,17 @@ echo *6.- Disable Windows Update
 echo *7.- About the Optimizer
 echo.
 
-:: Options (Automated)
-echo.
-echo =======================================================
-echo    APPLYING ALL RECOMMENDED OPTIMIZATIONS AUTOMATICALLY
-echo =======================================================
-echo.
-timeout /t 3 /nobreak
-goto :recommended
+:: Options
+set /p op=Option: 
+if "%op%"=="" goto :start
+if "%op%"=="1" goto :recommended
+if "%op%"=="2" goto :optitweakspc
+if "%op%"=="3" goto :restorepoint
+if "%op%"=="4" goto :temp
+if "%op%"=="5" goto :defender
+if "%op%"=="6" goto :update
+if "%op%"=="7" goto :about
+if "%op%"=="" goto :Start
 
 :recommended
 cls
@@ -62,36 +65,36 @@ echo.
 echo === Reducing svchost processes ===
 for /f "delims=" %%i in ('powershell -NoProfile -Command "(Get-CimInstance Win32_OperatingSystem).TotalVisibleMemorySize"') do set MEM=%%i
 set /a RAM=%MEM% + 1024000
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "%RAM%" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "%RAM%" /f >nul 2>&1
 
 echo.
 echo === Disabling Wifi Sense ===
-reg add "HKLM\Software\Microsoft\PolicyManager\default\WiFi" /v AllowWiFiHotSpotReporting /t REG_DWORD /d 0 /f
-reg add "HKLM\Software\Microsoft\PolicyManager\default\WiFi" /v AllowAutoConnectToWiFiSenseHotspots /t REG_DWORD /d 0 /f
+reg add "HKLM\Software\Microsoft\PolicyManager\default\WiFi" /v AllowWiFiHotSpotReporting /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\Software\Microsoft\PolicyManager\default\WiFi" /v AllowAutoConnectToWiFiSenseHotspots /t REG_DWORD /d 0 /f >nul 2>&1
 
 echo.
 echo === Disabling Windows Update Tasks ===
-schtasks /Change /TN "\Microsoft\Windows\InstallService\*" /Disable
-schtasks /Change /TN "\Microsoft\Windows\UpdateOrchestrator\*" /Disable
-schtasks /Change /TN "\Microsoft\Windows\UpdateAssistant\*" /Disable
-schtasks /Change /TN "\Microsoft\Windows\WaaSMedic\*" /Disable
-schtasks /Change /TN "\Microsoft\Windows\WindowsUpdate\*" /Disable
-schtasks /Change /TN "\Microsoft\WindowsUpdate\*" /Disable
+schtasks /Change /TN "\Microsoft\Windows\InstallService\*" /Disable >nul 2>&1
+schtasks /Change /TN "\Microsoft\Windows\UpdateOrchestrator\*" /Disable >nul 2>&1
+schtasks /Change /TN "\Microsoft\Windows\UpdateAssistant\*" /Disable >nul 2>&1
+schtasks /Change /TN "\Microsoft\Windows\WaaSMedic\*" /Disable >nul 2>&1
+schtasks /Change /TN "\Microsoft\Windows\WindowsUpdate\*" /Disable >nul 2>&1
+schtasks /Change /TN "\Microsoft\WindowsUpdate\*" /Disable >nul 2>&1
 
 echo.
 echo === Optimizing Visual Section ===
-reg add "HKCU\Control Panel\Desktop" /v DragFullWindows /t REG_SZ /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v MenuShowDelay /t REG_SZ /d 200 /f
-reg add "HKCU\Control Panel\Desktop" /v MinAnimate /t REG_SZ /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v KeyboardDelay /t REG_DWORD /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v ListviewAlphaSelect /t REG_DWORD /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v ListviewShadow /t REG_DWORD /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v TaskbarAnimations /t REG_DWORD /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v VisualFXSetting /t REG_DWORD /d 3 /f
-reg add "HKCU\Control Panel\Desktop" /v EnableAeroPeek /t REG_DWORD /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v MenuShowDelay /t REG_DWORD /d 1 /f
-reg add "HKCU\Control Panel\Desktop" /v AutoEndTasks /t REG_DWORD /d 1 /f
-reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d "0" /f
+reg add "HKCU\Control Panel\Desktop" /v DragFullWindows /t REG_SZ /d 0 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v MenuShowDelay /t REG_SZ /d 200 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v MinAnimate /t REG_SZ /d 0 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v KeyboardDelay /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v ListviewAlphaSelect /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v ListviewShadow /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v TaskbarAnimations /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v VisualFXSetting /t REG_DWORD /d 3 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v EnableAeroPeek /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v MenuShowDelay /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v AutoEndTasks /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d "0" /f >nul 2>&1
 
 echo.
 echo === Disabling Teredo ===
@@ -99,29 +102,29 @@ netsh interface teredo set state disabled
 
 echo.
 echo === Disabling Telemetry Tasks ===
-schtasks /Change /TN "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /Disable
-schtasks /Change /TN "Microsoft\Windows\Application Experience\ProgramDataUpdater" /Disable
-schtasks /Change /TN "Microsoft\Windows\Autochk\Proxy" /Disable
-schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /Disable
-schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" /Disable
-schtasks /Change /TN "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" /Disable
-schtasks /Change /TN "Microsoft\Windows\Feedback\Siuf\DmClient" /Disable
-schtasks /Change /TN "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload" /Disable
-schtasks /Change /TN "Microsoft\Windows\Windows Error Reporting\QueueReporting" /Disable
-schtasks /Change /TN "Microsoft\Windows\Application Experience\MareBackup" /Disable
-schtasks /Change /TN "Microsoft\Windows\Application Experience\StartupAppTask" /Disable
-schtasks /Change /TN "Microsoft\Windows\Application Experience\PcaPatchDbTask" /Disable
-schtasks /Change /TN "Microsoft\Windows\Maps\MapsUpdateTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Application Experience\ProgramDataUpdater" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Autochk\Proxy" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Feedback\Siuf\DmClient" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Windows Error Reporting\QueueReporting" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Application Experience\MareBackup" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Application Experience\StartupAppTask" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Application Experience\PcaPatchDbTask" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Maps\MapsUpdateTask" /Disable >nul 2>&1
 
 echo.
 echo === Disabling Telemetry Registry ===
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v AllowTelemetry /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 0 /f
-reg add "HKCU\SOFTWARE\Microsoft\Siuf\Rules" /v NumberOfSIUFInPeriod /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v DoNotShowFeedbackNotifications /t REG_DWORD /d 1 /f
-reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v DisableTailoredExperiencesWithDiagnosticData /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" /v DisabledByGroupPolicy /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v Disabled /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v AllowTelemetry /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Microsoft\Siuf\Rules" /v NumberOfSIUFInPeriod /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v DoNotShowFeedbackNotifications /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v DisableTailoredExperiencesWithDiagnosticData /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" /v DisabledByGroupPolicy /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v Disabled /t REG_DWORD /d 1 /f >nul 2>&1
 
 echo.
 echo === Applying Registry Tweaks ===
@@ -135,238 +138,238 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multime
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" /v "MaxCmds" /t REG_DWORD /d 100 /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" /v "MaxThreads" /t REG_DWORD /d 100 /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" /v "MaxCollectionCount" /t REG_DWORD /d 32 /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v LongPathsEnabled /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /v SearchOrderConfig /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v NetworkThrottlingIndex /t REG_DWORD /d 4294967295 /f
-reg add "HKLM\SYSTEM\ControlSet001\Services\Ndu" /v Start /t REG_DWORD /d 2 /f
-reg add "HKCU\Control Panel\Mouse" /v MouseHoverTime /t REG_SZ /d "400" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v IRPStackSize /t REG_DWORD /d 30 /f
-reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Feeds" /v ShellFeedsTaskbarViewMode /t REG_DWORD /d 2 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v HideSCAMeetNow /t REG_DWORD /d 1 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement" /v ScoobeSystemSettingEnabled /t REG_DWORD /d 0 /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d "2" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v LongPathsEnabled /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /v SearchOrderConfig /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v NetworkThrottlingIndex /t REG_DWORD /d 4294967295 /f >nul 2>&1
+reg add "HKLM\SYSTEM\ControlSet001\Services\Ndu" /v Start /t REG_DWORD /d 2 /f >nul 2>&1
+reg add "HKCU\Control Panel\Mouse" /v MouseHoverTime /t REG_SZ /d "400" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v IRPStackSize /t REG_DWORD /d 30 /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Feeds" /v ShellFeedsTaskbarViewMode /t REG_DWORD /d 2 /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v HideSCAMeetNow /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement" /v ScoobeSystemSettingEnabled /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d "2" /f >nul 2>&1
 
 echo.
 echo === Setting services to manual ===
-sc config "AJRouter" start= demand
-sc config "ALG" start= demand
-sc config "AppIDSvc" start= demand
-sc config "AppMgmt" start= demand
-sc config "AppReadiness" start= demand
-sc config "AppXSvc" start= demand
-sc config "Appinfo" start= demand
-sc config "AssignedAccessManagerSvc" start= demand
-sc config "AxInstSV" start= demand
-sc config "BDESVC" start= demand
-sc config "BTAGService" start= demand
-sc config "BcastDVRUserService_*" start= demand
-sc config "BluetoothUserService_*" start= demand
-sc config "Browser" start= demand
-sc config "CaptureService_*" start= demand
-sc config "CertPropSvc" start= demand
-sc config "ClipSVC" start= demand
-sc config "ConsentUxUserSvc_*" start= demand
-sc config "CredentialEnrollmentManagerUserSvc_*" start= demand
-sc config "CscService" start= demand
-sc config "DcpSvc" start= demand
-sc config "DevQueryBroker" start= demand
-sc config "DeviceAssociationBrokerSvc_*" start= demand
-sc config "DeviceAssociationService" start= demand
-sc config "DeviceInstall" start= demand
-sc config "DevicePickerUserSvc_*" start= demand
-sc config "DevicesFlowUserSvc_*" start= demand
-sc config "DisplayEnhancementService" start= demand
-sc config "DmEnrollmentSvc" start= demand
-sc config "DsSvc" start= demand
-sc config "DsmSvc" start= demand
-sc config "EFS" start= demand
-sc config "EapHost" start= demand
-sc config "EntAppSvc" start= demand
-sc config "FDResPub" start= demand
-sc config "Fax" start= demand
-sc config "FrameServer" start= demand
-sc config "FrameServerMonitor" start= demand
-sc config "GraphicsPerfSvc" start= demand
-sc config "HomeGroupListener" start= demand
-sc config "HomeGroupProvider" start= demand
-sc config "HvHost" start= demand
-sc config "IEEtwCollectorService" start= demand
-sc config "IKEEXT" start= demand
-sc config "InstallService" start= demand
-sc config "InventorySvc" start= demand
-sc config "IpxlatCfgSvc" start= demand
-sc config "KtmRm" start= demand
-sc config "LicenseManager" start= demand
-sc config "LxpSvc" start= demand
-sc config "MSDTC" start= demand
-sc config "MSiSCSI" start= demand
-sc config "McpManagementService" start= demand
-sc config "MessagingService_*" start= demand
-sc config "MicrosoftEdgeElevationService" start= demand
-sc config "MixedRealityOpenXRSvc" start= demand
-sc config "NPSMSvc_*" start= demand
-sc config "NaturalAuthentication" start= demand
-sc config "NcaSvc" start= demand
-sc config "NcbService" start= demand
-sc config "NcdAutoSetup" start= demand
-sc config "NetSetupSvc" start= demand
-sc config "Netman" start= demand
-sc config "NgcCtnrSvc" start= demand
-sc config "NgcSvc" start= demand
-sc config "NlaSvc" start= demand
-sc config "P9RdrService_*" start= demand
-sc config "PNRPAutoReg" start= demand
-sc config "PNRPsvc" start= demand
-sc config "PeerDistSvc" start= demand
-sc config "PenService_*" start= demand
-sc config "PerfHost" start= demand
-sc config "PhoneSvc" start= demand
-sc config "PimIndexMaintenanceSvc_*" start= demand
-sc config "PlugPlay" start= demand
-sc config "PolicyAgent" start= demand
-sc config "PrintNotify" start= demand
-sc config "PrintWorkflowUserSvc_*" start= demand
-sc config "PushToInstall" start= demand
-sc config "QWAVE" start= demand
-sc config "RasAuto" start= demand
-sc config "RasMan" start= demand
-sc config "RetailDemo" start= demand
-sc config "RmSvc" start= demand
-sc config "RpcLocator" start= demand
-sc config "SCPolicySvc" start= demand
-sc config "SCardSvr" start= demand
-sc config "SDRSVC" start= demand
-sc config "SEMgrSvc" start= demand
-sc config "SNMPTRAP" start= demand
-sc config "SNMPTrap" start= demand
-sc config "SSDPSRV" start= demand
-sc config "ScDeviceEnum" start= demand
-sc config "SecurityHealthService" start= demand
-sc config "Sense" start= demand
-sc config "SensorDataService" start= demand
-sc config "SensorService" start= demand
-sc config "SensrSvc" start= demand
-sc config "SessionEnv" start= demand
-sc config "SharedAccess" start= demand
-sc config "SharedRealitySvc" start= demand
-sc config "SmsRouter" start= demand
-sc config "SstpSvc" start= demand
-sc config "StiSvc" start= demand
-sc config "TabletInputService" start= demand
-sc config "TapiSrv" start= demand
-sc config "TieringEngineService" start= demand
-sc config "TimeBroker" start= demand
-sc config "TimeBrokerSvc" start= demand
-sc config "TokenBroker" start= demand
-sc config "TroubleshootingSvc" start= demand
-sc config "TrustedInstaller" start= demand
-sc config "UI0Detect" start= demand
-sc config "UdkUserSvc_*" start= demand
-sc config "UmRdpService" start= demand
-sc config "UnistoreSvc_*" start= demand
-sc config "UserDataSvc_*" start= demand
-sc config "VSS" start= demand
-sc config "VacSvc" start= demand
-sc config "W32Time" start= demand
-sc config "WEPHOSTSVC" start= demand
-sc config "WFDSConMgrSvc" start= demand
-sc config "WMPNetworkSvc" start= demand
-sc config "WManSvc" start= demand
-sc config "WPDBusEnum" start= demand
-sc config "WSService" start= demand
-sc config "WaaSMedicSvc" start= demand
-sc config "WalletService" start= demand
-sc config "WarpJITSvc" start= demand
-sc config "WbioSrvc" start= demand
-sc config "WcsPlugInService" start= demand
-sc config "WdNisSvc" start= demand
-sc config "WdiServiceHost" start= demand
-sc config "WdiSystemHost" start= demand
-sc config "WebClient" start= demand
-sc config "Wecsvc" start= demand
-sc config "WerSvc" start= demand
-sc config "WiaRpc" start= demand
-sc config "WinHttpAutoProxySvc" start= demand
-sc config "WinRM" start= demand
-sc config "WpcMonSvc" start= demand
-sc config "XblAuthManager" start= demand
-sc config "XblGameSave" start= demand
-sc config "XboxGipSvc" start= demand
-sc config "XboxNetApiSvc" start= demand
-sc config "autotimesvc" start= demand
-sc config "bthserv" start= demand
-sc config "camsvc" start= demand
-sc config "cloudidsvc" start= demand
-sc config "dcsvc" start= demand
-sc config "defragsvc" start= demand
-sc config "diagnosticshub.standardcollector.service" start= demand
-sc config "diagsvc" start= demand
-sc config "dmwappushservice" start= demand
-sc config "dot3svc" start= demand
-sc config "edgeupdate" start= demand
-sc config "edgeupdatem" start= demand
-sc config "embeddedmode" start= demand
-sc config "fdPHost" start= demand
-sc config "fhsvc" start= demand
-sc config "hidserv" start= demand
-sc config "icssvc" start= demand
-sc config "lfsvc" start= demand
-sc config "lltdsvc" start= demand
-sc config "lmhosts" start= demand
-sc config "msiserver" start= demand
-sc config "netprofm" start= demand
-sc config "p2pimsvc" start= demand
-sc config "p2psvc" start= demand
-sc config "perceptionsimulation" start= demand
-sc config "pla" start= demand
-sc config "seclogon" start= demand
-sc config "smphost" start= demand
-sc config "spectrum" start= demand
-sc config "svsvc" start= demand
-sc config "swprv" start= demand
-sc config "upnphost" start= demand
-sc config "vds" start= demand
-sc config "vmicguestinterface" start= demand
-sc config "vmicheartbeat" start= demand
-sc config "vmickvpexchange" start= demand
-sc config "vmicrdv" start= demand
-sc config "vmicshutdown" start= demand
-sc config "vmictimesync" start= demand
-sc config "vmicvmsession" start= demand
-sc config "vmicvss" start= demand
-sc config "vmvss" start= demand
-sc config "wbengine" start= demand
-sc config "wcncsvc" start= demand
-sc config "webthreatdefsvc" start= demand
-sc config "wercplsupport" start= demand
-sc config "wisvc" start= demand
-sc config "wlidsvc" start= demand
-sc config "wlpasvc" start= demand
-sc config "wmiApSrv" start= demand
-sc config "workfolderssvc" start= demand
-sc config "wuauserv" start= demand
-sc config "wudfsvc" start= demand
+sc config "AJRouter" start= demand >nul 2>&1
+sc config "ALG" start= demand >nul 2>&1
+sc config "AppIDSvc" start= demand >nul 2>&1
+sc config "AppMgmt" start= demand >nul 2>&1
+sc config "AppReadiness" start= demand >nul 2>&1
+sc config "AppXSvc" start= demand >nul 2>&1
+sc config "Appinfo" start= demand >nul 2>&1
+sc config "AssignedAccessManagerSvc" start= demand >nul 2>&1
+sc config "AxInstSV" start= demand >nul 2>&1
+sc config "BDESVC" start= demand >nul 2>&1
+sc config "BTAGService" start= demand >nul 2>&1
+sc config "BcastDVRUserService_*" start= demand >nul 2>&1
+sc config "BluetoothUserService_*" start= demand >nul 2>&1
+sc config "Browser" start= demand >nul 2>&1
+sc config "CaptureService_*" start= demand >nul 2>&1
+sc config "CertPropSvc" start= demand >nul 2>&1
+sc config "ClipSVC" start= demand >nul 2>&1
+sc config "ConsentUxUserSvc_*" start= demand >nul 2>&1
+sc config "CredentialEnrollmentManagerUserSvc_*" start= demand >nul 2>&1
+sc config "CscService" start= demand >nul 2>&1
+sc config "DcpSvc" start= demand >nul 2>&1
+sc config "DevQueryBroker" start= demand >nul 2>&1
+sc config "DeviceAssociationBrokerSvc_*" start= demand >nul 2>&1
+sc config "DeviceAssociationService" start= demand >nul 2>&1
+sc config "DeviceInstall" start= demand >nul 2>&1
+sc config "DevicePickerUserSvc_*" start= demand >nul 2>&1
+sc config "DevicesFlowUserSvc_*" start= demand >nul 2>&1
+sc config "DisplayEnhancementService" start= demand >nul 2>&1
+sc config "DmEnrollmentSvc" start= demand >nul 2>&1
+sc config "DsSvc" start= demand >nul 2>&1
+sc config "DsmSvc" start= demand >nul 2>&1
+sc config "EFS" start= demand >nul 2>&1
+sc config "EapHost" start= demand >nul 2>&1
+sc config "EntAppSvc" start= demand >nul 2>&1
+sc config "FDResPub" start= demand >nul 2>&1
+sc config "Fax" start= demand >nul 2>&1
+sc config "FrameServer" start= demand >nul 2>&1
+sc config "FrameServerMonitor" start= demand >nul 2>&1
+sc config "GraphicsPerfSvc" start= demand >nul 2>&1
+sc config "HomeGroupListener" start= demand >nul 2>&1
+sc config "HomeGroupProvider" start= demand >nul 2>&1
+sc config "HvHost" start= demand >nul 2>&1
+sc config "IEEtwCollectorService" start= demand >nul 2>&1
+sc config "IKEEXT" start= demand >nul 2>&1
+sc config "InstallService" start= demand >nul 2>&1
+sc config "InventorySvc" start= demand >nul 2>&1
+sc config "IpxlatCfgSvc" start= demand >nul 2>&1
+sc config "KtmRm" start= demand >nul 2>&1
+sc config "LicenseManager" start= demand >nul 2>&1
+sc config "LxpSvc" start= demand >nul 2>&1
+sc config "MSDTC" start= demand >nul 2>&1
+sc config "MSiSCSI" start= demand >nul 2>&1
+sc config "McpManagementService" start= demand >nul 2>&1
+sc config "MessagingService_*" start= demand >nul 2>&1
+sc config "MicrosoftEdgeElevationService" start= demand >nul 2>&1
+sc config "MixedRealityOpenXRSvc" start= demand >nul 2>&1
+sc config "NPSMSvc_*" start= demand >nul 2>&1
+sc config "NaturalAuthentication" start= demand >nul 2>&1
+sc config "NcaSvc" start= demand >nul 2>&1
+sc config "NcbService" start= demand >nul 2>&1
+sc config "NcdAutoSetup" start= demand >nul 2>&1
+sc config "NetSetupSvc" start= demand >nul 2>&1
+sc config "Netman" start= demand >nul 2>&1
+sc config "NgcCtnrSvc" start= demand >nul 2>&1
+sc config "NgcSvc" start= demand >nul 2>&1
+sc config "NlaSvc" start= demand >nul 2>&1
+sc config "P9RdrService_*" start= demand >nul 2>&1
+sc config "PNRPAutoReg" start= demand >nul 2>&1
+sc config "PNRPsvc" start= demand >nul 2>&1
+sc config "PeerDistSvc" start= demand >nul 2>&1
+sc config "PenService_*" start= demand >nul 2>&1
+sc config "PerfHost" start= demand >nul 2>&1
+sc config "PhoneSvc" start= demand >nul 2>&1
+sc config "PimIndexMaintenanceSvc_*" start= demand >nul 2>&1
+sc config "PlugPlay" start= demand >nul 2>&1
+sc config "PolicyAgent" start= demand >nul 2>&1
+sc config "PrintNotify" start= demand >nul 2>&1
+sc config "PrintWorkflowUserSvc_*" start= demand >nul 2>&1
+sc config "PushToInstall" start= demand >nul 2>&1
+sc config "QWAVE" start= demand >nul 2>&1
+sc config "RasAuto" start= demand >nul 2>&1
+sc config "RasMan" start= demand >nul 2>&1
+sc config "RetailDemo" start= demand >nul 2>&1
+sc config "RmSvc" start= demand >nul 2>&1
+sc config "RpcLocator" start= demand >nul 2>&1
+sc config "SCPolicySvc" start= demand >nul 2>&1
+sc config "SCardSvr" start= demand >nul 2>&1
+sc config "SDRSVC" start= demand >nul 2>&1
+sc config "SEMgrSvc" start= demand >nul 2>&1
+sc config "SNMPTRAP" start= demand >nul 2>&1
+sc config "SNMPTrap" start= demand >nul 2>&1
+sc config "SSDPSRV" start= demand >nul 2>&1
+sc config "ScDeviceEnum" start= demand >nul 2>&1
+sc config "SecurityHealthService" start= demand >nul 2>&1
+sc config "Sense" start= demand >nul 2>&1
+sc config "SensorDataService" start= demand >nul 2>&1
+sc config "SensorService" start= demand >nul 2>&1
+sc config "SensrSvc" start= demand >nul 2>&1
+sc config "SessionEnv" start= demand >nul 2>&1
+sc config "SharedAccess" start= demand >nul 2>&1
+sc config "SharedRealitySvc" start= demand >nul 2>&1
+sc config "SmsRouter" start= demand >nul 2>&1
+sc config "SstpSvc" start= demand >nul 2>&1
+sc config "StiSvc" start= demand >nul 2>&1
+sc config "TabletInputService" start= demand >nul 2>&1
+sc config "TapiSrv" start= demand >nul 2>&1
+sc config "TieringEngineService" start= demand >nul 2>&1
+sc config "TimeBroker" start= demand >nul 2>&1
+sc config "TimeBrokerSvc" start= demand >nul 2>&1
+sc config "TokenBroker" start= demand >nul 2>&1
+sc config "TroubleshootingSvc" start= demand >nul 2>&1
+sc config "TrustedInstaller" start= demand >nul 2>&1
+sc config "UI0Detect" start= demand >nul 2>&1
+sc config "UdkUserSvc_*" start= demand >nul 2>&1
+sc config "UmRdpService" start= demand >nul 2>&1
+sc config "UnistoreSvc_*" start= demand >nul 2>&1
+sc config "UserDataSvc_*" start= demand >nul 2>&1
+sc config "VSS" start= demand >nul 2>&1
+sc config "VacSvc" start= demand >nul 2>&1
+sc config "W32Time" start= demand >nul 2>&1
+sc config "WEPHOSTSVC" start= demand >nul 2>&1
+sc config "WFDSConMgrSvc" start= demand >nul 2>&1
+sc config "WMPNetworkSvc" start= demand >nul 2>&1
+sc config "WManSvc" start= demand >nul 2>&1
+sc config "WPDBusEnum" start= demand >nul 2>&1
+sc config "WSService" start= demand >nul 2>&1
+sc config "WaaSMedicSvc" start= demand >nul 2>&1
+sc config "WalletService" start= demand >nul 2>&1
+sc config "WarpJITSvc" start= demand >nul 2>&1
+sc config "WbioSrvc" start= demand >nul 2>&1
+sc config "WcsPlugInService" start= demand >nul 2>&1
+sc config "WdNisSvc" start= demand >nul 2>&1
+sc config "WdiServiceHost" start= demand >nul 2>&1
+sc config "WdiSystemHost" start= demand >nul 2>&1
+sc config "WebClient" start= demand >nul 2>&1
+sc config "Wecsvc" start= demand >nul 2>&1
+sc config "WerSvc" start= demand >nul 2>&1
+sc config "WiaRpc" start= demand >nul 2>&1
+sc config "WinHttpAutoProxySvc" start= demand >nul 2>&1
+sc config "WinRM" start= demand >nul 2>&1
+sc config "WpcMonSvc" start= demand >nul 2>&1
+sc config "XblAuthManager" start= demand >nul 2>&1
+sc config "XblGameSave" start= demand >nul 2>&1
+sc config "XboxGipSvc" start= demand >nul 2>&1
+sc config "XboxNetApiSvc" start= demand >nul 2>&1
+sc config "autotimesvc" start= demand >nul 2>&1
+sc config "bthserv" start= demand >nul 2>&1
+sc config "camsvc" start= demand >nul 2>&1
+sc config "cloudidsvc" start= demand >nul 2>&1
+sc config "dcsvc" start= demand >nul 2>&1
+sc config "defragsvc" start= demand >nul 2>&1
+sc config "diagnosticshub.standardcollector.service" start= demand >nul 2>&1
+sc config "diagsvc" start= demand >nul 2>&1
+sc config "dmwappushservice" start= demand >nul 2>&1
+sc config "dot3svc" start= demand >nul 2>&1
+sc config "edgeupdate" start= demand >nul 2>&1
+sc config "edgeupdatem" start= demand >nul 2>&1
+sc config "embeddedmode" start= demand >nul 2>&1
+sc config "fdPHost" start= demand >nul 2>&1
+sc config "fhsvc" start= demand >nul 2>&1
+sc config "hidserv" start= demand >nul 2>&1
+sc config "icssvc" start= demand >nul 2>&1
+sc config "lfsvc" start= demand >nul 2>&1
+sc config "lltdsvc" start= demand >nul 2>&1
+sc config "lmhosts" start= demand >nul 2>&1
+sc config "msiserver" start= demand >nul 2>&1
+sc config "netprofm" start= demand >nul 2>&1
+sc config "p2pimsvc" start= demand >nul 2>&1
+sc config "p2psvc" start= demand >nul 2>&1
+sc config "perceptionsimulation" start= demand >nul 2>&1
+sc config "pla" start= demand >nul 2>&1
+sc config "seclogon" start= demand >nul 2>&1
+sc config "smphost" start= demand >nul 2>&1
+sc config "spectrum" start= demand >nul 2>&1
+sc config "svsvc" start= demand >nul 2>&1
+sc config "swprv" start= demand >nul 2>&1
+sc config "upnphost" start= demand >nul 2>&1
+sc config "vds" start= demand >nul 2>&1
+sc config "vmicguestinterface" start= demand >nul 2>&1
+sc config "vmicheartbeat" start= demand >nul 2>&1
+sc config "vmickvpexchange" start= demand >nul 2>&1
+sc config "vmicrdv" start= demand >nul 2>&1
+sc config "vmicshutdown" start= demand >nul 2>&1
+sc config "vmictimesync" start= demand >nul 2>&1
+sc config "vmicvmsession" start= demand >nul 2>&1
+sc config "vmicvss" start= demand >nul 2>&1
+sc config "vmvss" start= demand >nul 2>&1
+sc config "wbengine" start= demand >nul 2>&1
+sc config "wcncsvc" start= demand >nul 2>&1
+sc config "webthreatdefsvc" start= demand >nul 2>&1
+sc config "wercplsupport" start= demand >nul 2>&1
+sc config "wisvc" start= demand >nul 2>&1
+sc config "wlidsvc" start= demand >nul 2>&1
+sc config "wlpasvc" start= demand >nul 2>&1
+sc config "wmiApSrv" start= demand >nul 2>&1
+sc config "workfolderssvc" start= demand >nul 2>&1
+sc config "wuauserv" start= demand >nul 2>&1
+sc config "wudfsvc" start= demand >nul 2>&1
 
 echo.
 echo === Disabling Services ===
-sc config "diagnosticshub.standardcollector.service" start= disabled
-sc config "DiagTrack" start= disabled
-sc config "DPS" start= disabled
-sc config "FontCache" start= disabled
-sc config "FontCache3.0.0.0" start= disabled
-sc config "SystemUsageReportSvc_QUEENCREEK" start= disabled
-sc config "GpuEnergyDrv" start= disabled
-sc config "ShellHWDetection" start= disabled
-sc config "SgrmAgent" start= disabled
-sc config "SgrmBroker" start= disabled
-sc config "uhssvc" start= disabled
-sc config "TrkWks" start= disabled
-sc config "WdiServiceHost" start= disabled
-sc config "WdiSystemHost" start= disabled
-sc config "WSearch" start= disabled
-sc config "diagsvc" start= disabled
+sc config "diagnosticshub.standardcollector.service" start= disabled >nul 2>&1
+sc config "DiagTrack" start= disabled >nul 2>&1
+sc config "DPS" start= disabled >nul 2>&1
+sc config "FontCache" start= disabled >nul 2>&1
+sc config "FontCache3.0.0.0" start= disabled >nul 2>&1
+sc config "SystemUsageReportSvc_QUEENCREEK" start= disabled >nul 2>&1
+sc config "GpuEnergyDrv" start= disabled >nul 2>&1
+sc config "ShellHWDetection" start= disabled >nul 2>&1
+sc config "SgrmAgent" start= disabled >nul 2>&1
+sc config "SgrmBroker" start= disabled >nul 2>&1
+sc config "uhssvc" start= disabled >nul 2>&1
+sc config "TrkWks" start= disabled >nul 2>&1
+sc config "WdiServiceHost" start= disabled >nul 2>&1
+sc config "WdiSystemHost" start= disabled >nul 2>&1
+sc config "WSearch" start= disabled >nul 2>&1
+sc config "diagsvc" start= disabled >nul 2>&1
 
 echo === Clearing DNS cache ===
 echo.
@@ -442,7 +445,7 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Ti
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting" /v "DisableEnhancedNotifications" /t REG_DWORD /d 1 /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" /v "DisableNotifications" /t REG_DWORD /d 1 /f >nul 2>&1
 reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications" /v "NoToastApplicationNotification" /t REG_DWORD /d 1 /f >nul 2>&1
-reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications" /v "NoToastApplicationNotificationOnLockScreen" /t REG_DWORD /d 1 /f
+reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications" /v "NoToastApplicationNotificationOnLockScreen" /t REG_DWORD /d 1 /f >nul 2>&1
 timeout /t 3 /nobreak
 goto :Start
 
@@ -470,7 +473,7 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Ti
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting" /v "DisableEnhancedNotifications" /t REG_DWORD /d 0 /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" /v "DisableNotifications" /t REG_DWORD /d 0 /f >nul 2>&1
 reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications" /v "NoToastApplicationNotification" /t REG_DWORD /d 0 /f >nul 2>&1
-reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications" /v "NoToastApplicationNotificationOnLockScreen" /t REG_DWORD /d 0 /f
+reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications" /v "NoToastApplicationNotificationOnLockScreen" /t REG_DWORD /d 0 /f >nul 2>&1
 timeout /t 3 /nobreak
 goto :start
 
@@ -515,204 +518,204 @@ cls
 
 echo.
 echo Setting services to manual...
-sc config "AJRouter" start= demand
-sc config "ALG" start= demand
-sc config "AppIDSvc" start= demand
-sc config "AppMgmt" start= demand
-sc config "AppReadiness" start= demand
-sc config "AppXSvc" start= demand
-sc config "Appinfo" start= demand
-sc config "AssignedAccessManagerSvc" start= demand
-sc config "AxInstSV" start= demand
-sc config "BDESVC" start= demand
-sc config "BTAGService" start= demand
-sc config "BcastDVRUserService_*" start= demand
-sc config "BluetoothUserService_*" start= demand
-sc config "Browser" start= demand
-sc config "CaptureService_*" start= demand
-sc config "CertPropSvc" start= demand
-sc config "ClipSVC" start= demand
-sc config "ConsentUxUserSvc_*" start= demand
-sc config "CredentialEnrollmentManagerUserSvc_*" start= demand
-sc config "CscService" start= demand
-sc config "DcpSvc" start= demand
-sc config "DevQueryBroker" start= demand
-sc config "DeviceAssociationBrokerSvc_*" start= demand
-sc config "DeviceAssociationService" start= demand
-sc config "DeviceInstall" start= demand
-sc config "DevicePickerUserSvc_*" start= demand
-sc config "DevicesFlowUserSvc_*" start= demand
-sc config "DisplayEnhancementService" start= demand
-sc config "DmEnrollmentSvc" start= demand
-sc config "DsSvc" start= demand
-sc config "DsmSvc" start= demand
-sc config "EFS" start= demand
-sc config "EapHost" start= demand
-sc config "EntAppSvc" start= demand
-sc config "FDResPub" start= demand
-sc config "Fax" start= demand
-sc config "FrameServer" start= demand
-sc config "FrameServerMonitor" start= demand
-sc config "GraphicsPerfSvc" start= demand
-sc config "HomeGroupListener" start= demand
-sc config "HomeGroupProvider" start= demand
-sc config "HvHost" start= demand
-sc config "IEEtwCollectorService" start= demand
-sc config "IKEEXT" start= demand
-sc config "InstallService" start= demand
-sc config "InventorySvc" start= demand
-sc config "IpxlatCfgSvc" start= demand
-sc config "KtmRm" start= demand
-sc config "LicenseManager" start= demand
-sc config "LxpSvc" start= demand
-sc config "MSDTC" start= demand
-sc config "MSiSCSI" start= demand
-sc config "McpManagementService" start= demand
-sc config "MessagingService_*" start= demand
-sc config "MicrosoftEdgeElevationService" start= demand
-sc config "MixedRealityOpenXRSvc" start= demand
-sc config "NPSMSvc_*" start= demand
-sc config "NaturalAuthentication" start= demand
-sc config "NcaSvc" start= demand
-sc config "NcbService" start= demand
-sc config "NcdAutoSetup" start= demand
-sc config "NetSetupSvc" start= demand
-sc config "Netman" start= demand
-sc config "NgcCtnrSvc" start= demand
-sc config "NgcSvc" start= demand
-sc config "NlaSvc" start= demand
-sc config "P9RdrService_*" start= demand
-sc config "PNRPAutoReg" start= demand
-sc config "PNRPsvc" start= demand
-sc config "PeerDistSvc" start= demand
-sc config "PenService_*" start= demand
-sc config "PerfHost" start= demand
-sc config "PhoneSvc" start= demand
-sc config "PimIndexMaintenanceSvc_*" start= demand
-sc config "PlugPlay" start= demand
-sc config "PolicyAgent" start= demand
-sc config "PrintNotify" start= demand
-sc config "PrintWorkflowUserSvc_*" start= demand
-sc config "PushToInstall" start= demand
-sc config "QWAVE" start= demand
-sc config "RasAuto" start= demand
-sc config "RasMan" start= demand
-sc config "RetailDemo" start= demand
-sc config "RmSvc" start= demand
-sc config "RpcLocator" start= demand
-sc config "SCPolicySvc" start= demand
-sc config "SCardSvr" start= demand
-sc config "SDRSVC" start= demand
-sc config "SEMgrSvc" start= demand
-sc config "SNMPTRAP" start= demand
-sc config "SNMPTrap" start= demand
-sc config "SSDPSRV" start= demand
-sc config "ScDeviceEnum" start= demand
-sc config "SecurityHealthService" start= demand
-sc config "Sense" start= demand
-sc config "SensorDataService" start= demand
-sc config "SensorService" start= demand
-sc config "SensrSvc" start= demand
-sc config "SessionEnv" start= demand
-sc config "SharedAccess" start= demand
-sc config "SharedRealitySvc" start= demand
-sc config "SmsRouter" start= demand
-sc config "SstpSvc" start= demand
-sc config "StiSvc" start= demand
-sc config "TabletInputService" start= demand
-sc config "TapiSrv" start= demand
-sc config "TieringEngineService" start= demand
-sc config "TimeBroker" start= demand
-sc config "TimeBrokerSvc" start= demand
-sc config "TokenBroker" start= demand
-sc config "TroubleshootingSvc" start= demand
-sc config "TrustedInstaller" start= demand
-sc config "UI0Detect" start= demand
-sc config "UdkUserSvc_*" start= demand
-sc config "UmRdpService" start= demand
-sc config "UnistoreSvc_*" start= demand
-sc config "UserDataSvc_*" start= demand
-sc config "VSS" start= demand
-sc config "VacSvc" start= demand
-sc config "W32Time" start= demand
-sc config "WEPHOSTSVC" start= demand
-sc config "WFDSConMgrSvc" start= demand
-sc config "WMPNetworkSvc" start= demand
-sc config "WManSvc" start= demand
-sc config "WPDBusEnum" start= demand
-sc config "WSService" start= demand
-sc config "WaaSMedicSvc" start= demand
-sc config "WalletService" start= demand
-sc config "WarpJITSvc" start= demand
-sc config "WbioSrvc" start= demand
-sc config "WcsPlugInService" start= demand
-sc config "WdNisSvc" start= demand
-sc config "WdiServiceHost" start= demand
-sc config "WdiSystemHost" start= demand
-sc config "WebClient" start= demand
-sc config "Wecsvc" start= demand
-sc config "WerSvc" start= demand
-sc config "WiaRpc" start= demand
-sc config "WinHttpAutoProxySvc" start= demand
-sc config "WinRM" start= demand
-sc config "WpcMonSvc" start= demand
-sc config "XblAuthManager" start= demand
-sc config "XblGameSave" start= demand
-sc config "XboxGipSvc" start= demand
-sc config "XboxNetApiSvc" start= demand
-sc config "autotimesvc" start= demand
-sc config "bthserv" start= demand
-sc config "camsvc" start= demand
-sc config "cloudidsvc" start= demand
-sc config "dcsvc" start= demand
-sc config "defragsvc" start= demand
-sc config "diagnosticshub.standardcollector.service" start= demand
-sc config "diagsvc" start= demand
-sc config "dmwappushservice" start= demand
-sc config "dot3svc" start= demand
-sc config "edgeupdate" start= demand
-sc config "edgeupdatem" start= demand
-sc config "embeddedmode" start= demand
-sc config "fdPHost" start= demand
-sc config "fhsvc" start= demand
-sc config "hidserv" start= demand
-sc config "icssvc" start= demand
-sc config "lfsvc" start= demand
-sc config "lltdsvc" start= demand
-sc config "lmhosts" start= demand
-sc config "msiserver" start= demand
-sc config "netprofm" start= demand
-sc config "p2pimsvc" start= demand
-sc config "p2psvc" start= demand
-sc config "perceptionsimulation" start= demand
-sc config "pla" start= demand
-sc config "seclogon" start= demand
-sc config "smphost" start= demand
-sc config "spectrum" start= demand
-sc config "svsvc" start= demand
-sc config "swprv" start= demand
-sc config "upnphost" start= demand
-sc config "vds" start= demand
-sc config "vmicguestinterface" start= demand
-sc config "vmicheartbeat" start= demand
-sc config "vmickvpexchange" start= demand
-sc config "vmicrdv" start= demand
-sc config "vmicshutdown" start= demand
-sc config "vmictimesync" start= demand
-sc config "vmicvmsession" start= demand
-sc config "vmicvss" start= demand
-sc config "vmvss" start= demand
-sc config "wbengine" start= demand
-sc config "wcncsvc" start= demand
-sc config "webthreatdefsvc" start= demand
-sc config "wercplsupport" start= demand
-sc config "wisvc" start= demand
-sc config "wlidsvc" start= demand
-sc config "wlpasvc" start= demand
-sc config "wmiApSrv" start= demand
-sc config "workfolderssvc" start= demand
-sc config "wuauserv" start= demand
-sc config "wudfsvc" start= demand
+sc config "AJRouter" start= demand >nul 2>&1
+sc config "ALG" start= demand >nul 2>&1
+sc config "AppIDSvc" start= demand >nul 2>&1
+sc config "AppMgmt" start= demand >nul 2>&1
+sc config "AppReadiness" start= demand >nul 2>&1
+sc config "AppXSvc" start= demand >nul 2>&1
+sc config "Appinfo" start= demand >nul 2>&1
+sc config "AssignedAccessManagerSvc" start= demand >nul 2>&1
+sc config "AxInstSV" start= demand >nul 2>&1
+sc config "BDESVC" start= demand >nul 2>&1
+sc config "BTAGService" start= demand >nul 2>&1
+sc config "BcastDVRUserService_*" start= demand >nul 2>&1
+sc config "BluetoothUserService_*" start= demand >nul 2>&1
+sc config "Browser" start= demand >nul 2>&1
+sc config "CaptureService_*" start= demand >nul 2>&1
+sc config "CertPropSvc" start= demand >nul 2>&1
+sc config "ClipSVC" start= demand >nul 2>&1
+sc config "ConsentUxUserSvc_*" start= demand >nul 2>&1
+sc config "CredentialEnrollmentManagerUserSvc_*" start= demand >nul 2>&1
+sc config "CscService" start= demand >nul 2>&1
+sc config "DcpSvc" start= demand >nul 2>&1
+sc config "DevQueryBroker" start= demand >nul 2>&1
+sc config "DeviceAssociationBrokerSvc_*" start= demand >nul 2>&1
+sc config "DeviceAssociationService" start= demand >nul 2>&1
+sc config "DeviceInstall" start= demand >nul 2>&1
+sc config "DevicePickerUserSvc_*" start= demand >nul 2>&1
+sc config "DevicesFlowUserSvc_*" start= demand >nul 2>&1
+sc config "DisplayEnhancementService" start= demand >nul 2>&1
+sc config "DmEnrollmentSvc" start= demand >nul 2>&1
+sc config "DsSvc" start= demand >nul 2>&1
+sc config "DsmSvc" start= demand >nul 2>&1
+sc config "EFS" start= demand >nul 2>&1
+sc config "EapHost" start= demand >nul 2>&1
+sc config "EntAppSvc" start= demand >nul 2>&1
+sc config "FDResPub" start= demand >nul 2>&1
+sc config "Fax" start= demand >nul 2>&1
+sc config "FrameServer" start= demand >nul 2>&1
+sc config "FrameServerMonitor" start= demand >nul 2>&1
+sc config "GraphicsPerfSvc" start= demand >nul 2>&1
+sc config "HomeGroupListener" start= demand >nul 2>&1
+sc config "HomeGroupProvider" start= demand >nul 2>&1
+sc config "HvHost" start= demand >nul 2>&1
+sc config "IEEtwCollectorService" start= demand >nul 2>&1
+sc config "IKEEXT" start= demand >nul 2>&1
+sc config "InstallService" start= demand >nul 2>&1
+sc config "InventorySvc" start= demand >nul 2>&1
+sc config "IpxlatCfgSvc" start= demand >nul 2>&1
+sc config "KtmRm" start= demand >nul 2>&1
+sc config "LicenseManager" start= demand >nul 2>&1
+sc config "LxpSvc" start= demand >nul 2>&1
+sc config "MSDTC" start= demand >nul 2>&1
+sc config "MSiSCSI" start= demand >nul 2>&1
+sc config "McpManagementService" start= demand >nul 2>&1
+sc config "MessagingService_*" start= demand >nul 2>&1
+sc config "MicrosoftEdgeElevationService" start= demand >nul 2>&1
+sc config "MixedRealityOpenXRSvc" start= demand >nul 2>&1
+sc config "NPSMSvc_*" start= demand >nul 2>&1
+sc config "NaturalAuthentication" start= demand >nul 2>&1
+sc config "NcaSvc" start= demand >nul 2>&1
+sc config "NcbService" start= demand >nul 2>&1
+sc config "NcdAutoSetup" start= demand >nul 2>&1
+sc config "NetSetupSvc" start= demand >nul 2>&1
+sc config "Netman" start= demand >nul 2>&1
+sc config "NgcCtnrSvc" start= demand >nul 2>&1
+sc config "NgcSvc" start= demand >nul 2>&1
+sc config "NlaSvc" start= demand >nul 2>&1
+sc config "P9RdrService_*" start= demand >nul 2>&1
+sc config "PNRPAutoReg" start= demand >nul 2>&1
+sc config "PNRPsvc" start= demand >nul 2>&1
+sc config "PeerDistSvc" start= demand >nul 2>&1
+sc config "PenService_*" start= demand >nul 2>&1
+sc config "PerfHost" start= demand >nul 2>&1
+sc config "PhoneSvc" start= demand >nul 2>&1
+sc config "PimIndexMaintenanceSvc_*" start= demand >nul 2>&1
+sc config "PlugPlay" start= demand >nul 2>&1
+sc config "PolicyAgent" start= demand >nul 2>&1
+sc config "PrintNotify" start= demand >nul 2>&1
+sc config "PrintWorkflowUserSvc_*" start= demand >nul 2>&1
+sc config "PushToInstall" start= demand >nul 2>&1
+sc config "QWAVE" start= demand >nul 2>&1
+sc config "RasAuto" start= demand >nul 2>&1
+sc config "RasMan" start= demand >nul 2>&1
+sc config "RetailDemo" start= demand >nul 2>&1
+sc config "RmSvc" start= demand >nul 2>&1
+sc config "RpcLocator" start= demand >nul 2>&1
+sc config "SCPolicySvc" start= demand >nul 2>&1
+sc config "SCardSvr" start= demand >nul 2>&1
+sc config "SDRSVC" start= demand >nul 2>&1
+sc config "SEMgrSvc" start= demand >nul 2>&1
+sc config "SNMPTRAP" start= demand >nul 2>&1
+sc config "SNMPTrap" start= demand >nul 2>&1
+sc config "SSDPSRV" start= demand >nul 2>&1
+sc config "ScDeviceEnum" start= demand >nul 2>&1
+sc config "SecurityHealthService" start= demand >nul 2>&1
+sc config "Sense" start= demand >nul 2>&1
+sc config "SensorDataService" start= demand >nul 2>&1
+sc config "SensorService" start= demand >nul 2>&1
+sc config "SensrSvc" start= demand >nul 2>&1
+sc config "SessionEnv" start= demand >nul 2>&1
+sc config "SharedAccess" start= demand >nul 2>&1
+sc config "SharedRealitySvc" start= demand >nul 2>&1
+sc config "SmsRouter" start= demand >nul 2>&1
+sc config "SstpSvc" start= demand >nul 2>&1
+sc config "StiSvc" start= demand >nul 2>&1
+sc config "TabletInputService" start= demand >nul 2>&1
+sc config "TapiSrv" start= demand >nul 2>&1
+sc config "TieringEngineService" start= demand >nul 2>&1
+sc config "TimeBroker" start= demand >nul 2>&1
+sc config "TimeBrokerSvc" start= demand >nul 2>&1
+sc config "TokenBroker" start= demand >nul 2>&1
+sc config "TroubleshootingSvc" start= demand >nul 2>&1
+sc config "TrustedInstaller" start= demand >nul 2>&1
+sc config "UI0Detect" start= demand >nul 2>&1
+sc config "UdkUserSvc_*" start= demand >nul 2>&1
+sc config "UmRdpService" start= demand >nul 2>&1
+sc config "UnistoreSvc_*" start= demand >nul 2>&1
+sc config "UserDataSvc_*" start= demand >nul 2>&1
+sc config "VSS" start= demand >nul 2>&1
+sc config "VacSvc" start= demand >nul 2>&1
+sc config "W32Time" start= demand >nul 2>&1
+sc config "WEPHOSTSVC" start= demand >nul 2>&1
+sc config "WFDSConMgrSvc" start= demand >nul 2>&1
+sc config "WMPNetworkSvc" start= demand >nul 2>&1
+sc config "WManSvc" start= demand >nul 2>&1
+sc config "WPDBusEnum" start= demand >nul 2>&1
+sc config "WSService" start= demand >nul 2>&1
+sc config "WaaSMedicSvc" start= demand >nul 2>&1
+sc config "WalletService" start= demand >nul 2>&1
+sc config "WarpJITSvc" start= demand >nul 2>&1
+sc config "WbioSrvc" start= demand >nul 2>&1
+sc config "WcsPlugInService" start= demand >nul 2>&1
+sc config "WdNisSvc" start= demand >nul 2>&1
+sc config "WdiServiceHost" start= demand >nul 2>&1
+sc config "WdiSystemHost" start= demand >nul 2>&1
+sc config "WebClient" start= demand >nul 2>&1
+sc config "Wecsvc" start= demand >nul 2>&1
+sc config "WerSvc" start= demand >nul 2>&1
+sc config "WiaRpc" start= demand >nul 2>&1
+sc config "WinHttpAutoProxySvc" start= demand >nul 2>&1
+sc config "WinRM" start= demand >nul 2>&1
+sc config "WpcMonSvc" start= demand >nul 2>&1
+sc config "XblAuthManager" start= demand >nul 2>&1
+sc config "XblGameSave" start= demand >nul 2>&1
+sc config "XboxGipSvc" start= demand >nul 2>&1
+sc config "XboxNetApiSvc" start= demand >nul 2>&1
+sc config "autotimesvc" start= demand >nul 2>&1
+sc config "bthserv" start= demand >nul 2>&1
+sc config "camsvc" start= demand >nul 2>&1
+sc config "cloudidsvc" start= demand >nul 2>&1
+sc config "dcsvc" start= demand >nul 2>&1
+sc config "defragsvc" start= demand >nul 2>&1
+sc config "diagnosticshub.standardcollector.service" start= demand >nul 2>&1
+sc config "diagsvc" start= demand >nul 2>&1
+sc config "dmwappushservice" start= demand >nul 2>&1
+sc config "dot3svc" start= demand >nul 2>&1
+sc config "edgeupdate" start= demand >nul 2>&1
+sc config "edgeupdatem" start= demand >nul 2>&1
+sc config "embeddedmode" start= demand >nul 2>&1
+sc config "fdPHost" start= demand >nul 2>&1
+sc config "fhsvc" start= demand >nul 2>&1
+sc config "hidserv" start= demand >nul 2>&1
+sc config "icssvc" start= demand >nul 2>&1
+sc config "lfsvc" start= demand >nul 2>&1
+sc config "lltdsvc" start= demand >nul 2>&1
+sc config "lmhosts" start= demand >nul 2>&1
+sc config "msiserver" start= demand >nul 2>&1
+sc config "netprofm" start= demand >nul 2>&1
+sc config "p2pimsvc" start= demand >nul 2>&1
+sc config "p2psvc" start= demand >nul 2>&1
+sc config "perceptionsimulation" start= demand >nul 2>&1
+sc config "pla" start= demand >nul 2>&1
+sc config "seclogon" start= demand >nul 2>&1
+sc config "smphost" start= demand >nul 2>&1
+sc config "spectrum" start= demand >nul 2>&1
+sc config "svsvc" start= demand >nul 2>&1
+sc config "swprv" start= demand >nul 2>&1
+sc config "upnphost" start= demand >nul 2>&1
+sc config "vds" start= demand >nul 2>&1
+sc config "vmicguestinterface" start= demand >nul 2>&1
+sc config "vmicheartbeat" start= demand >nul 2>&1
+sc config "vmickvpexchange" start= demand >nul 2>&1
+sc config "vmicrdv" start= demand >nul 2>&1
+sc config "vmicshutdown" start= demand >nul 2>&1
+sc config "vmictimesync" start= demand >nul 2>&1
+sc config "vmicvmsession" start= demand >nul 2>&1
+sc config "vmicvss" start= demand >nul 2>&1
+sc config "vmvss" start= demand >nul 2>&1
+sc config "wbengine" start= demand >nul 2>&1
+sc config "wcncsvc" start= demand >nul 2>&1
+sc config "webthreatdefsvc" start= demand >nul 2>&1
+sc config "wercplsupport" start= demand >nul 2>&1
+sc config "wisvc" start= demand >nul 2>&1
+sc config "wlidsvc" start= demand >nul 2>&1
+sc config "wlpasvc" start= demand >nul 2>&1
+sc config "wmiApSrv" start= demand >nul 2>&1
+sc config "workfolderssvc" start= demand >nul 2>&1
+sc config "wuauserv" start= demand >nul 2>&1
+sc config "wudfsvc" start= demand >nul 2>&1
 
 timeout /t 3 /nobreak
 goto :done
@@ -723,7 +726,7 @@ cls
 echo.
 echo Disabling Fullscreen Optimizations...
 
-reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v GameDVR_DXGIHonorFSEWindowsCompatible /t REG_DWORD /d 1 /f
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v GameDVR_DXGIHonorFSEWindowsCompatible /t REG_DWORD /d 1 /f >nul 2>&1
 
 timeout /t 3 /nobreak
 goto :done
@@ -733,13 +736,13 @@ cls
 
 echo.
 echo Disabling Telemetry Registry...
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v AllowTelemetry /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 0 /f
-reg add "HKCU\SOFTWARE\Microsoft\Siuf\Rules" /v NumberOfSIUFInPeriod /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v DoNotShowFeedbackNotifications /t REG_DWORD /d 1 /f
-reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v DisableTailoredExperiencesWithDiagnosticData /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" /v DisabledByGroupPolicy /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v Disabled /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v AllowTelemetry /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Microsoft\Siuf\Rules" /v NumberOfSIUFInPeriod /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v DoNotShowFeedbackNotifications /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v DisableTailoredExperiencesWithDiagnosticData /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" /v DisabledByGroupPolicy /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v Disabled /t REG_DWORD /d 1 /f >nul 2>&1
 
 timeout /t 3 /nobreak
 goto :done
@@ -749,20 +752,20 @@ cls
 
 echo.
 echo === Disabling Services ===
-sc config "DiagTrack" start= disabled
-sc config "DPS" start= disabled
-sc config "FontCache" start= disabled
-sc config "FontCache3.0.0.0" start= disabled
-sc config "SystemUsageReportSvc_QUEENCREEK" start= disabled
-sc config "GpuEnergyDrv" start= disabled
-sc config "ShellHWDetection" start= disabled
-sc config "SgrmAgent" start= disabled
-sc config "SgrmBroker" start= disabled
-sc config "uhssvc" start= disabled
-sc config "WdiServiceHost" start= disabled
-sc config "WdiSystemHost" start= disabled
-sc config "WSearch" start= disabled
-sc config "diagsvc" start= disabled
+sc config "DiagTrack" start= disabled >nul 2>&1
+sc config "DPS" start= disabled >nul 2>&1
+sc config "FontCache" start= disabled >nul 2>&1
+sc config "FontCache3.0.0.0" start= disabled >nul 2>&1
+sc config "SystemUsageReportSvc_QUEENCREEK" start= disabled >nul 2>&1
+sc config "GpuEnergyDrv" start= disabled >nul 2>&1
+sc config "ShellHWDetection" start= disabled >nul 2>&1
+sc config "SgrmAgent" start= disabled >nul 2>&1
+sc config "SgrmBroker" start= disabled >nul 2>&1
+sc config "uhssvc" start= disabled >nul 2>&1
+sc config "WdiServiceHost" start= disabled >nul 2>&1
+sc config "WdiSystemHost" start= disabled >nul 2>&1
+sc config "WSearch" start= disabled >nul 2>&1
+sc config "diagsvc" start= disabled >nul 2>&1
 
 timeout /t 3 /nobreak
 goto :done
@@ -771,7 +774,7 @@ goto :done
 cls
 
 echo Disabling background applications
-reg add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI" /v GlobalUserDisabled /t REG_DWORD /d 1 /f
+reg add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI" /v GlobalUserDisabled /t REG_DWORD /d 1 /f >nul 2>&1
 
 timeout /t 3 /nobreak
 goto :done
@@ -780,18 +783,18 @@ goto :done
 cls
 
 echo.
-reg add "HKCU\Control Panel\Desktop" /v DragFullWindows /t REG_SZ /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v MenuShowDelay /t REG_SZ /d 200 /f
-reg add "HKCU\Control Panel\Desktop" /v KeyboardDelay /t REG_DWORD /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v ListviewAlphaSelect /t REG_DWORD /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v ListviewShadow /t REG_DWORD /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v TaskbarAnimations /t REG_DWORD /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v VisualFXSetting /t REG_DWORD /d 3 /f
-reg add "HKCU\Control Panel\Desktop" /v EnableAeroPeek /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" /v TaskbarMn /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" /v TaskbarDa /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowTaskViewButton /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v SearchboxTaskbarMode /t REG_DWORD /d 0 /f
+reg add "HKCU\Control Panel\Desktop" /v DragFullWindows /t REG_SZ /d 0 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v MenuShowDelay /t REG_SZ /d 200 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v KeyboardDelay /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v ListviewAlphaSelect /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v ListviewShadow /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v TaskbarAnimations /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v VisualFXSetting /t REG_DWORD /d 3 /f >nul 2>&1
+reg add "HKCU\Control Panel\Desktop" /v EnableAeroPeek /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" /v TaskbarMn /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" /v TaskbarDa /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowTaskViewButton /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v SearchboxTaskbarMode /t REG_DWORD /d 0 /f >nul 2>&1
 
 timeout /t 3 /nobreak
 goto :done
@@ -802,24 +805,24 @@ cls
 
 echo.
 echo Setting high priority for games...
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csgo.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\cs2.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\FortniteClient-Win64-Shipping.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\gta_3.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\gta_vc.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\gta_sa.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\GTAIV.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\GTA5.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\java.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\javaw.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\minecraft.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Minecraft.Windows.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MsMpEng.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 1 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\obs32.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\obs64.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\PPSSPP.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ShellExperienceHost.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 5 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\svchost.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 5 /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csgo.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\cs2.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\FortniteClient-Win64-Shipping.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\gta_3.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\gta_vc.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\gta_sa.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\GTAIV.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\GTA5.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\java.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\javaw.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\minecraft.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Minecraft.Windows.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MsMpEng.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\obs32.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\obs64.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\PPSSPP.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 6 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ShellExperienceHost.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 5 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\svchost.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d 5 /f >nul 2>&1
 goto :done
 
 :svchostprocess
@@ -828,7 +831,7 @@ cls
 echo Reducing svchost processes...
 for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:value') do set MEM=%%i
 set /a RAM=%MEM% + 1024000
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "%RAM%" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "%RAM%" /f >nul 2>&1
 
 timeout /t 3 /nobreak
 goto :done
@@ -836,7 +839,7 @@ goto :done
 :disablegamedvr
 cls
 
-reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v GameDVR_DXGIHonorFSEWindowsCompatible /t REG_DWORD /d 1 /f
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v GameDVR_DXGIHonorFSEWindowsCompatible /t REG_DWORD /d 1 /f >nul 2>&1
 
 timeout /t 3 /nobreak
 goto :done
@@ -869,7 +872,7 @@ cls
 :: Disable update related services
 for %%i in (wuauserv, UsoSvc, uhssvc, WaaSMedicSvc) do (
 	net stop %%i
-	sc config %%i start= disabled
+sc config %%i start= disabled >nul 2>&1
 	sc failure %%i reset= 0 actions= ""
 )
 
@@ -881,20 +884,20 @@ for %%i in (WaaSMedicSvc, wuaueng) do (
 )
 
 :: Update registry
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v Start /t REG_DWORD /d 4 /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v FailureActions /t REG_BINARY /d 000000000000000000000000030000001400000000000000c0d4010000000000e09304000000000000000000 /f
-reg add "HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v Start /t REG_DWORD /d 4 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v FailureActions /t REG_BINARY /d 000000000000000000000000030000001400000000000000c0d4010000000000e09304000000000000000000 /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f >nul 2>&1
 
 :: Delete downloaded update files
 erase /f /s /q c:\windows\softwaredistribution\*.* && rmdir /s /q c:\windows\softwaredistribution
 
 :: Disable all update related scheduled tasks
-schtasks /change /tn "\Microsoft\Windows\InstallService\*" /disable
-schtasks /change /tn "\Microsoft\Windows\UpdateOrchestrator\*" /disable
-schtasks /change /tn "\Microsoft\Windows\UpdateAssistant\*" /disable
-schtasks /change /tn "\Microsoft\Windows\WaaSMedic\*" /disable
-schtasks /change /tn "\Microsoft\Windows\WindowsUpdate\*" /disable
-schtasks /change /tn "\Microsoft\WindowsUpdate\*" /disable
+schtasks /change /tn "\Microsoft\Windows\InstallService\*" /disable >nul 2>&1
+schtasks /change /tn "\Microsoft\Windows\UpdateOrchestrator\*" /disable >nul 2>&1
+schtasks /change /tn "\Microsoft\Windows\UpdateAssistant\*" /disable >nul 2>&1
+schtasks /change /tn "\Microsoft\Windows\WaaSMedic\*" /disable >nul 2>&1
+schtasks /change /tn "\Microsoft\Windows\WindowsUpdate\*" /disable >nul 2>&1
+schtasks /change /tn "\Microsoft\WindowsUpdate\*" /disable >nul 2>&1
 
 :: Go Back
 timeout /t 3 /nobreak
@@ -903,9 +906,9 @@ goto :update
 :WD
 cls
 :: Enable update related services
-sc config wuauserv start= auto
-sc config UsoSvc start= auto
-sc config uhssvc start= delayed-auto
+sc config wuauserv start= auto >nul 2>&1
+sc config UsoSvc start= auto >nul 2>&1
+sc config uhssvc start= delayed-auto >nul 2>&1
 
 :: Restore renamed services
 for %%i in (WaaSMedicSvc, wuaueng) do (
@@ -915,17 +918,17 @@ for %%i in (WaaSMedicSvc, wuaueng) do (
 )
 
 :: Update registry
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v Start /t REG_DWORD /d 3 /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v FailureActions /t REG_BINARY /d 840300000000000000000000030000001400000001000000c0d4010001000000e09304000000000000000000 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v Start /t REG_DWORD /d 3 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v FailureActions /t REG_BINARY /d 840300000000000000000000030000001400000001000000c0d4010001000000e09304000000000000000000 /f >nul 2>&1
 reg delete "HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoUpdate" /f
 
 :: Enable all update related scheduled tasks
-schtasks /change /tn "\Microsoft\Windows\InstallService\*" /enable
-schtasks /change /tn "\Microsoft\Windows\UpdateOrchestrator\*" /enable
-schtasks /change /tn "\Microsoft\Windows\UpdateAssistant\*" /enable
-schtasks /change /tn "\Microsoft\Windows\WaaSMedic\*" /enable
-schtasks /change /tn "\Microsoft\Windows\WindowsUpdate\*" /enable
-schtasks /change /tn "\Microsoft\WindowsUpdate\*" /enable
+schtasks /change /tn "\Microsoft\Windows\InstallService\*" /enable >nul 2>&1
+schtasks /change /tn "\Microsoft\Windows\UpdateOrchestrator\*" /enable >nul 2>&1
+schtasks /change /tn "\Microsoft\Windows\UpdateAssistant\*" /enable >nul 2>&1
+schtasks /change /tn "\Microsoft\Windows\WaaSMedic\*" /enable >nul 2>&1
+schtasks /change /tn "\Microsoft\Windows\WindowsUpdate\*" /enable >nul 2>&1
+schtasks /change /tn "\Microsoft\WindowsUpdate\*" /enable >nul 2>&1
 
 :: Go Back
 timeout /t 3 /nobreak
