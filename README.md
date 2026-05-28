@@ -88,32 +88,46 @@ Instead, every modification strictly adheres to our engineering standards:
 
 ## ⬛ REPOSITORY ARCHITECTURE
 
-A clean, futuristic blueprint of the optimization matrix. 
+A clean, futuristic blueprint of the massive optimization matrix. 
 
 ```text
 📦 Windows-Optimisations
- ┣ 📜 Start.bat                # [ENTRY] The zero-friction launcher for the GUI
- ┣ 📂 GUI/                     # [INTERFACE] The native WPF Dashboard XAML
- ┣ 📂 Launchers/               # [CONTROLLERS] The PowerShell logic binding the GUI
- ┣ 📂 Tweaks/                  # [CORE] The primary system optimization engine
- ┃  ┣ 📂 Appearance/           # UI decluttering and hardware-accelerated rendering profiles
- ┃  ┣ 📂 Background/           # Background process suspension and app termination logic
- ┃  ┣ 📂 Browser/              # Chromium/Edge background telemetry annihilation
- ┃  ┣ 📂 Display/              # Fullscreen focus overrides and GPU preference routing
- ┃  ┣ 📂 Gaming/               # Game Mode enforcement and interrupt moderation tuning
- ┃  ┣ 📂 Network/              # Bandwidth unthrottling and telemetry firewalling
- ┃  ┣ 📂 Privacy/              # Deep system telemetry blacks (Mic, Camera, Metadata)
- ┃  ┣ 📂 Startup/              # Boot latency reduction and auto-start suppression
- ┃  ┣ 📂 Storage/              # Disk I/O caching and automated indexer bloat removal
- ┃  ┗ 📂 Windows/              # Core OS scheduler and task prioritization hooks
- ┣ 📂 Core/                    # [INFRASTRUCTURE] Logging, state capture, and restore manifests
- ┣ 📂 Activators/              # KMS38 and HWID activation provisioning
- ┣ 📂 Antivirus/               # Elite security deployment frameworks
- ┣ 📂 Browsers/                # Hardened, privacy-first web browsers
- ┣ 📂 Drivers/                 # Next-gen hardware detection and driver initialization
- ┣ 📂 Hardware/                # Deep hardware telemetry probes (CPU-Z, GPU-Z, HWMonitor)
- ┣ 📂 Windows Update/          # Absolute granular control over OS update channels
- ┗ 📂 docs/                    # [KNOWLEDGE] The central intelligence wiki
+ ┣ 📜 Start.bat                 # [ENTRY] The zero-friction launcher for the GUI
+ ┣ 📜 Launch_Dashboard.ps1      # [CONTROLLER] The main WPF dashboard driver
+ ┣ 📂 GUI/                      # [INTERFACE] The native WPF Dashboard XAML components
+ ┣ 📂 Launchers/                # [CONTROLLERS] Initialization logic and shortcuts
+ ┣ 📂 Core/                     # [INFRASTRUCTURE] Advanced Restore & Validation Engines
+ ┣ 📂 Tweaks/                   # [CORE] The primary system optimization engine
+ ┃  ┣ 📂 Appearance/ & Visual/  # UI decluttering and hardware-accelerated rendering profiles
+ ┃  ┣ 📂 Apps/                  # Windows bloatware removal and sponsored app annihilation
+ ┃  ┣ 📂 Background/ & Tasks/   # Background process suspension and scheduled task tuning
+ ┃  ┣ 📂 Boot/ & Startup/       # Boot latency reduction and auto-start suppression
+ ┃  ┣ 📂 Browser/ & Explorer/   # Edge telemetry destruction and file explorer productivity
+ ┃  ┣ 📂 Display/ & GPU/        # Fullscreen focus overrides, MPO tweaks, and GPU routing
+ ┃  ┣ 📂 Gaming/                # Game Mode enforcement and interrupt moderation tuning
+ ┃  ┣ 📂 Network/ & Power/      # Bandwidth unthrottling, latency tweaks, and power plans
+ ┃  ┣ 📂 Privacy/ & Security/   # Deep system telemetry blocks and smartscreen/firewall tuning
+ ┃  ┣ 📂 Storage/               # Disk I/O caching, pagefile config, and aggressive cleanup
+ ┃  ┣ 📂 Audio/ & Camera/       # Peripheral privacy lockdowns and enhancement overrides
+ ┃  ┣ 📂 Search/ & Shell/       # Local search privacy and taskbar/widget telemetry blocks
+ ┃  ┣ 📂 Diagnostics/           # Telemetry and activity history suppression
+ ┃  ┣ 📂 Developer/             # WSL configuration and terminal/developer mode enabling
+ ┃  ┣ 📂 Updates/ & Sync/       # Driver update blocks and OneDrive/Settings sync removal
+ ┃  ┗ 📂 Troubleshooting/       # Clean boot managers and network stack reset tools
+ ┣ 📂 Tools/                    # [UTILITIES] Benchmarking, System Info, and App installations
+ ┣ 📂 Profiles/                 # [PROFILES] Global combined optimization profiles
+ ┣ 📂 Logs/                     # [TELEMETRY] Execution logs and diagnostics tracking
+ ┣ 📂 Activators/               # KMS38 and HWID activation provisioning
+ ┣ 📂 Antivirus/                # Elite security deployment frameworks
+ ┣ 📂 Browsers/                 # Hardened, privacy-first web browsers
+ ┣ 📂 Build/                    # Compilation and distribution generation scripts
+ ┣ 📂 Drivers/                  # Next-gen hardware detection and driver initialization
+ ┣ 📂 Extra/                    # Third-party utilities (Rufus, Mem Reduct, IObit Unlocker)
+ ┣ 📂 Hardware/                 # Deep hardware telemetry probes (CPU-Z, GPU-Z, HWMonitor)
+ ┣ 📂 Windows Update/           # Absolute granular control over OS update channels
+ ┣ 📂 ReleaseNotes/             # Version tracking and changelogs
+ ┣ 📂 docs/                     # [KNOWLEDGE] The central MkDocs source files
+ ┗ 📂 site/                     # [WIKI] The compiled static documentation site
 ```
 
 ---
