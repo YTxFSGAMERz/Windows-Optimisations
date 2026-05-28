@@ -47,7 +47,9 @@ Write-FrameworkLog -ModuleName "RestoreEngine" -Action "Completed Master Default
 
 Write-Host "`n[SUCCESS] Critical systems restored to default. A reboot is highly recommended." -ForegroundColor Green
 if (-not $Force) {
+    if (-not $Force) {
     Write-Host "Press any key to exit..."
-    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+}
 }
 
