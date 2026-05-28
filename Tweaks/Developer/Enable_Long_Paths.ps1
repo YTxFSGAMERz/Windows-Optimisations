@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Enable Long Paths (Tweaks/Developer/Enable_Long_Paths.ps1)
 
@@ -17,7 +22,7 @@ Write-Host "This will remove the 260-character path limit in Windows."
 Write-Host "This is highly recommended for developers using Git, Node.js,"
 Write-Host "and deeply nested folder structures."
 Write-Host "Press 'Y' to enable or any other key to abort..."
-$Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character
+if (-not $Force) { $Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character } else { $Confirm = 'y' }
 
 if ($Confirm -notmatch 'y') {
     Write-FrameworkLog -ModuleName "Developer" -Action "Aborted Long Paths config"
@@ -39,3 +44,4 @@ Write-Host "`n[SUCCESS] Long Paths have been enabled. A restart may be required 
 
 
 $null = Read-Host "Press Enter to exit..."
+
