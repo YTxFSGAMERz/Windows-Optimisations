@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: "Windows Optimisations",
+  title: "WinAurex",
   description: "Comprehensive collection of scripts and tools to optimize Windows 10/11 for peak performance, gaming, and privacy.",
   appearance: 'dark', // Native dark mode first
   themeConfig: {

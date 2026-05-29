@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "Windows Optimisations"
+  name: "WinAurex"
   text: "Ultimate Performance Suite"
   tagline: "Comprehensive collection of scripts and tools to optimize Windows 10/11 for peak performance, gaming, and privacy."
   actions:
@@ -13,8 +13,8 @@ hero:
       text: System Tweaks
       link: /TWEAKS
   image:
-    src: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-    alt: Windows Optimisations
+    src: /logo.png
+    alt: WinAurex Logo
 
 features:
   - title: Performance First
@@ -33,7 +33,7 @@ features:
 
 
 ::: info Ultimate Windows Performance, Debloating, and Privacy Suite
-Welcome to the official documentation site for the **Windows Optimisations** repository. This suite provides a curated, high-performance ecosystem of registry tweaks, automated installation files (`autounattend.xml`), toggle scripts, and utility configurations. Whether you want to boost gaming FPS, debloat background processes, or regain complete privacy on Windows 10/11, you'll find comprehensive step-by-step guides here.
+Welcome to the official documentation site for the **WinAurex** repository. This suite provides a curated, high-performance ecosystem of registry tweaks, automated installation files (`autounattend.xml`), toggle scripts, and utility configurations. Whether you want to boost gaming FPS, debloat background processes, or regain complete privacy on Windows 10/11, you'll find comprehensive step-by-step guides here.
 :::
 
 ---
@@ -53,7 +53,7 @@ Hi! I'm **Farhan**, the designer and maintainer of this optimization catalog. My
 ## 📂 Repository Layout
 
 ```
-Windows-Optimisations/
+WinAurex/
 ├── Activators/                 # Activation utilities (MAS & AAct)
 ├── Antivirus/                  # Lightweight, resident security installers (NOD32, Kaspersky, MalwareBytes)
 ├── Browsers/                   # Performance installers (Brave, Chrome, Firefox, Opera GX)
