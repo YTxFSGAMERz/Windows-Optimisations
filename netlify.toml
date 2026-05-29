@@ -1,11 +1,11 @@
 # Netlify Configuration for Windows Optimisations Documentation
 
 [build]
-  publish = "site"
-  command = "pip install -r requirements.txt && mkdocs build"
+  publish = "docs/.vitepress/dist"
+  command = "npm ci && npm run docs:build"
 
 [build.environment]
-  PYTHON_VERSION = "3.11"
+  NODE_VERSION = "20"
 
 # Custom headers for premium caching and security
 [[headers]]
