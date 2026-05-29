@@ -12,8 +12,6 @@
 
   /* Nav Bar Glassmorphism */
   --vp-nav-bg-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
 }
 
 /* Hide the default VitePress circular glowing background behind the logo */
@@ -64,12 +62,12 @@
 }
 
 /* Base Glassmorphism for Top Nav */
-.VPNav {
+.VPNavBar {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
-.dark .VPNav {
+.dark .VPNavBar {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
