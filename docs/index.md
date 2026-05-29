@@ -31,17 +31,6 @@ features:
     icon: 🛠️
 ---
 
-<p align="center">
-  <a href="https://github.com/YTxFSGAMERz/Windows-Optimisations" target="_blank">
-    <img src="https://img.shields.io/github/stars/YTxFSGAMERz/Windows-Optimisations?style=for-the-badge&color=00bcd4&logo=github" alt="Stars">
-  </a>
-  <a href="https://github.com/YTxFSGAMERz/Windows-Optimisations/fork" target="_blank">
-    <img src="https://img.shields.io/github/forks/YTxFSGAMERz/Windows-Optimisations?style=for-the-badge&color=00bcd4&logo=github" alt="Forks">
-  </a>
-  <a href="https://github.com/YTxFSGAMERz/Windows-Optimisations/blob/master/LICENSE" target="_blank">
-    <img src="https://img.shields.io/badge/license-MIT-00bcd4?style=for-the-badge" alt="License">
-  </a>
-</p>
 
 ::: info Ultimate Windows Performance, Debloating, and Privacy Suite
 Welcome to the official documentation site for the **Windows Optimisations** repository. This suite provides a curated, high-performance ecosystem of registry tweaks, automated installation files (`autounattend.xml`), toggle scripts, and utility configurations. Whether you want to boost gaming FPS, debloat background processes, or regain complete privacy on Windows 10/11, you'll find comprehensive step-by-step guides here.
