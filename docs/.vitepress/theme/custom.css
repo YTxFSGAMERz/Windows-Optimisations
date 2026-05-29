@@ -154,79 +154,96 @@ div[class*="language-"]:hover {
   box-shadow: 0 0 20px rgba(0, 188, 212, 0.4) !important;
 }
 
-/* Premium Matrix Table */
-.matrix-table-container {
-  overflow-x: auto;
-  margin: 30px 0;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+/* Premium Matrix Table - Aggressive Override of VitePress Defaults */
+.vp-doc .matrix-table-container {
+  overflow-x: auto !important;
+  margin: 30px 0 !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
-.dark .matrix-table-container {
-  background: rgba(20, 22, 30, 0.4);
+.dark .vp-doc .matrix-table-container {
+  background: rgba(20, 22, 30, 0.4) !important;
 }
 
-.matrix-table {
-  width: 100%;
-  border-collapse: collapse;
+.vp-doc table.matrix-table {
+  display: table !important;
+  width: 100% !important;
+  border-collapse: collapse !important;
   margin: 0 !important;
-  text-align: left;
+  text-align: left !important;
+  border: none !important;
+  background: transparent !important;
 }
 
-.matrix-table th {
-  background: rgba(0, 188, 212, 0.08);
-  color: var(--vp-c-text-1);
-  padding: 16px;
-  font-weight: 600;
-  border-bottom: 1px solid rgba(0, 188, 212, 0.3);
-  white-space: nowrap;
+.vp-doc table.matrix-table th {
+  background: rgba(0, 188, 212, 0.08) !important;
+  color: var(--vp-c-text-1) !important;
+  padding: 16px !important;
+  font-weight: 600 !important;
+  border: none !important;
+  border-bottom: 2px solid rgba(0, 188, 212, 0.3) !important;
+  white-space: nowrap !important;
 }
 
-.matrix-table td {
-  padding: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  color: var(--vp-c-text-2);
-  vertical-align: middle;
+.vp-doc table.matrix-table td {
+  background: transparent !important;
+  padding: 16px !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  color: var(--vp-c-text-2) !important;
+  vertical-align: middle !important;
 }
 
-.matrix-table tbody tr {
-  transition: background 0.2s ease;
+.vp-doc table.matrix-table tr {
+  background: transparent !important;
+  transition: background 0.2s ease !important;
+  border: none !important;
 }
 
-.matrix-table tbody tr:hover {
-  background: rgba(255, 255, 255, 0.04);
+.vp-doc table.matrix-table tr:nth-child(2n) {
+  background: transparent !important; /* Remove VitePress zebra striping */
 }
 
-.matrix-table tbody tr:last-child td {
-  border-bottom: none;
+.vp-doc table.matrix-table tr:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.vp-doc table.matrix-table tr:hover td {
+  color: var(--vp-c-text-1) !important;
+}
+
+.vp-doc table.matrix-table tr:last-child td {
+  border-bottom: none !important;
 }
 
 /* Status Badges */
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
+.vp-doc .status-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
 }
 
-.status-badge.supported {
-  background: rgba(16, 185, 129, 0.1);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.25);
+.vp-doc .status-badge.supported {
+  background: rgba(16, 185, 129, 0.1) !important;
+  color: #34d399 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
 }
 
-.status-badge.partial {
-  background: rgba(245, 158, 11, 0.1);
-  color: #fbbf24;
-  border: 1px solid rgba(245, 158, 11, 0.25);
+.vp-doc .status-badge.partial {
+  background: rgba(245, 158, 11, 0.1) !important;
+  color: #fbbf24 !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
 }
