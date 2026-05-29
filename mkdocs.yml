@@ -81,6 +81,9 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Installation:
+      - Unattended Install: AUTOUNATTEND.md
+      - Activators: ACTIVATORS.md
   - Architecture:
       - System Blueprint: Architecture_Blueprint.md
       - GUI Architecture: Dashboard_Architecture.md
@@ -90,12 +93,13 @@ nav:
       - Input Latency Myths: Input_Latency_Myths.md
       - Myths and Anti-Patterns: Myths_and_Anti_Patterns.md
       - Registry Reference: Registry_Reference.md
-  - Drivers: DRIVERS.md
-  - Antivirus & Security: ANTIVIRUS.md
-  - Web Browsers: BROWSERS.md
-  - Windows Update: WINDOWS_UPDATE.md
-  - WebView2 Info: WEBVIEW.md
-  - Hardware Monitoring: HARDWARE.md
-  - Extra Utilities: EXTRA.md
-  - Activators: ACTIVATORS.md
-  - Unattended Install: AUTOUNATTEND.md
+  - Drivers & Hardware:
+      - Drivers: DRIVERS.md
+      - Hardware Monitoring: HARDWARE.md
+  - Software & Utilities:
+      - Web Browsers: BROWSERS.md
+      - WebView2 Info: WEBVIEW.md
+      - Extra Utilities: EXTRA.md
+  - Security & Updates:
+      - Antivirus & Security: ANTIVIRUS.md
+      - Windows Update: WINDOWS_UPDATE.md
