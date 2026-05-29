@@ -1,75 +1,88 @@
 <div align="center">
 
-# ⚡ WINAUREX ⚡
-### A modular Windows configuration & observability framework engineered for responsiveness, transparency, and rollback-safe control.
+<img src="docs/assets/banner.png" alt="WinAurex Cyber Dashboard" width="1000" style="border-radius: 12px; border: 2px solid #00bcd4; box-shadow: 0 0 40px rgba(0, 188, 212, 0.4);">
 
-<img src="docs/assets/banner.png" alt="Futuristic Windows Optimization Cyber Dashboard" width="1000" style="border-radius: 8px; border: 1px solid #00bcd4; box-shadow: 0 0 20px rgba(0, 188, 212, 0.25);">
+<br><br>
 
-<br>
-
-`Windows Engineering Framework • Rollback-Safe • PowerShell + WPF • Open Source`
+<h1>⚡ Ｗ Ｉ Ｎ Ａ Ｕ Ｒ Ｅ Ｘ ⚡</h1>
+<h3>A modular Windows configuration & observability framework engineered for <br> <b>responsiveness, transparency, and rollback-safe control.</b></h3>
 
 <br>
+
+<kbd>&nbsp;Windows Engineering Framework&nbsp;</kbd> • <kbd>&nbsp;Rollback-Safe&nbsp;</kbd> • <kbd>&nbsp;PowerShell + WPF&nbsp;</kbd> • <kbd>&nbsp;Open Source&nbsp;</kbd>
+
+<br><br>
+
+<table>
+<tr>
+<td>
 
 ```powershell
-[ OK ] Rollback Engine Initialized
-[ OK ] Observability Layer Online
-[ OK ] Logging Framework Active
-[ OK ] Profiles Loaded
+[ 0.001s ] OK : Rollback Engine Initialized
+[ 0.042s ] OK : Observability Layer Online
+[ 0.119s ] OK : Logging Framework Active
+[ 0.180s ] OK : Master Profiles Loaded
 ```
+
+</td>
+</tr>
+</table>
 
 <br>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/ENGINE-MODULAR_ARCHITECTURE-00bcd4?style=flat&logo=windows&logoColor=white" alt="Modular Architecture">
-  <img src="https://img.shields.io/badge/ENGINE-NO_COMPILED_BINARIES-00bcd4?style=flat&logo=powershell&logoColor=white" alt="No Compiled Binaries">
-  <img src="https://img.shields.io/badge/SAFETY-ROLLBACK_READY-00bcd4?style=flat&logo=shield&logoColor=white" alt="Rollback Ready">
-  <img src="https://img.shields.io/badge/PLATFORM-WINDOWS_11_VERIFIED-00bcd4?style=flat&logo=windows11&logoColor=white" alt="Windows 11 Verified">
-  <img src="https://img.shields.io/badge/PLATFORM-WINDOWS_10_SUPPORTED-00bcd4?style=flat&logo=windows&logoColor=white" alt="Windows 10 Supported">
-  <img src="https://img.shields.io/badge/PLATFORM-WPF_DASHBOARD-00bcd4?style=flat&logo=reverbnation&logoColor=white" alt="WPF Dashboard">
-  <img src="https://img.shields.io/badge/OBSERVABILITY-LOGGING_ACTIVE-00bcd4?style=flat&logo=speedtest&logoColor=white" alt="Logging Active">
-  <img src="https://img.shields.io/badge/OBSERVABILITY-NATIVE_APIs-00bcd4?style=flat&logo=windows&logoColor=white" alt="Native APIs">
+  <a href="#"><img src="https://img.shields.io/badge/ENGINE-MODULAR_ARCHITECTURE-00bcd4?style=for-the-badge&logo=windows&logoColor=white" alt="Modular Architecture"></a>
+  <a href="#"><img src="https://img.shields.io/badge/ENGINE-NO_COMPILED_BINARIES-00bcd4?style=for-the-badge&logo=powershell&logoColor=white" alt="No Compiled Binaries"></a>
+  <a href="#"><img src="https://img.shields.io/badge/SAFETY-ROLLBACK_READY-00bcd4?style=for-the-badge&logo=shield&logoColor=white" alt="Rollback Ready"></a>
+  <br>
+  <a href="#"><img src="https://img.shields.io/badge/PLATFORM-WINDOWS_11_VERIFIED-00bcd4?style=for-the-badge&logo=windows11&logoColor=white" alt="Windows 11 Verified"></a>
+  <a href="#"><img src="https://img.shields.io/badge/PLATFORM-WINDOWS_10_SUPPORTED-00bcd4?style=for-the-badge&logo=windows&logoColor=white" alt="Windows 10 Supported"></a>
+  <a href="#"><img src="https://img.shields.io/badge/PLATFORM-WPF_DASHBOARD-00bcd4?style=for-the-badge&logo=reverbnation&logoColor=white" alt="WPF Dashboard"></a>
+  <br>
+  <a href="#"><img src="https://img.shields.io/badge/OBSERVABILITY-LOGGING_ACTIVE-00bcd4?style=for-the-badge&logo=speedtest&logoColor=white" alt="Logging Active"></a>
+  <a href="#"><img src="https://img.shields.io/badge/OBSERVABILITY-NATIVE_APIs-00bcd4?style=for-the-badge&logo=windows&logoColor=white" alt="Native APIs"></a>
 </p>
 
 <br>
 
-```text
-═══════════════════════════════════════════════════════════════════
-Framework Status      : ONLINE
-Rollback Engine       : ACTIVE
-Manifest Tracking     : ENABLED
-Telemetry Layer       : OPTIONAL
-Profile Orchestration : READY
-WPF Dashboard         : INITIALIZED
-═══════════════════════════════════════════════════════════════════
-```
+<blockquote>
+<code>
+  ███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗<br>
+  ██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║<br>
+  ███████╗ ╚████╔╝ ███████╗   ██║   █████╗  ██╔████╔██║<br>
+  ╚════██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██║╚██╔╝██║<br>
+  ███████║   ██║   ███████║   ██║   ███████╗██║ ╚═╝ ██║<br>
+  ╚══════╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝<br>
+  > SYSTEM STATUS : ONLINE<br>
+  > FRAMEWORK VERSION : v5.0.0
+</code>
+</blockquote>
+
 </div>
 
----
+<br><br>
 
-## ⬛ WHAT WINAUREX IS
+<h2 align="center">⬛ WHAT WINAUREX IS</h2>
 
-This is NOT a tweak pack. It is NOT a fake FPS booster, and it is NOT a random registry dump. 
+> **This is NOT a tweak pack. It is NOT a fake FPS booster, and it is NOT a random registry dump.**
 
 WinAurex is a modular state management and observability-first framework. Modern operating systems are saturated with background telemetry, unnecessary scheduled tasks, and sub-optimal resource allocation. This repository exists to place the control back into the hands of the hardware owner.
 
+<div align="center">
+  
 ```text
-User
- ↓
-Profiles
- ↓
-Modules
- ↓
-Logging + Snapshots
- ↓
-Windows Configuration Layer
+[ USER ] ──> [ PROFILES ] ──> [ MODULES ] ──> [ LOGS & SNAPSHOTS ] ──> [ OS CORE ]
 ```
 
----
+</div>
 
-## ⬛ CORE ARCHITECTURE
+<br>
 
-A clean, futuristic blueprint of the massive optimization matrix. 
+<h2 align="center">⬛ CORE ARCHITECTURE</h2>
+
+<details>
+<summary><b>View Infrastructure Blueprint (Click to Expand)</b></summary>
+<br>
 
 ```text
 📦 WinAurex
@@ -81,153 +94,134 @@ A clean, futuristic blueprint of the massive optimization matrix.
  ┗ 📂 docs/       # Central Documentation Knowledge Base
 ```
 
----
+</details>
 
-## ⬛ MODULE ECOSYSTEM
+<br>
 
-Our modules are highly organized into specific operational domains. We avoid chaotic registry dumps in favor of targeted, precise configurations.
+<h2 align="center">⬛ MODULE ECOSYSTEM</h2>
 
-### 🎮 GAMING DOMAIN
-Game Mode enforcement and interrupt moderation tuning.
-*   **Includes:** Dedicated resource allocation, background polling disablement, input latency reduction.
-*   **Safety:** Reversible via native Game Mode API tracking.
+<div align="center">
 
-### 🛡️ PRIVACY DOMAIN
-Deep system telemetry blocks and tracking prevention.
-*   **Includes:** Microsoft telemetry severing, microphone/camera hardening, cortana blocks.
-*   **Safety:** Safely unlinked without breaking Windows Update functionality.
+| 🎮 GAMING DOMAIN | 🛡️ PRIVACY DOMAIN |
+| :--- | :--- |
+| **Focus:** Resource allocation, input latency | **Focus:** Telemetry blocks, tracking prevention |
+| **Includes:** Game Mode enforcement | **Includes:** Cortana & Mic hardening |
+| **Safety:** Native API tracking | **Safety:** Reversible without breaking updates |
 
-### 🌐 NETWORK DOMAIN
-Bandwidth unthrottling and latency tweaks.
-*   **Includes:** TCP parameter adjustments, Delivery Optimization caps, polling reduction.
-*   **Safety:** Fully reversible via snapshot manifests.
+<br>
 
-### 📦 STORAGE DOMAIN
-Disk I/O caching and pagefile configuration.
-*   **Includes:** SSD optimizations, aggressive cache purges, indexer bloat removal.
-*   **Safety:** NO destructive partition formatting.
+| 🌐 NETWORK DOMAIN | 📦 STORAGE DOMAIN |
+| :--- | :--- |
+| **Focus:** Bandwidth unthrottling, ping | **Focus:** Disk I/O, pagefile config |
+| **Includes:** TCP params, Delivery Opt. caps | **Includes:** Cache purges, indexer bloat |
+| **Safety:** Snapshot manifest reversible | **Safety:** NO destructive formatting |
 
----
+</div>
 
-## ⬛ SAFETY & ROLLBACK ENGINE
+<br>
 
-> **CRITICAL ARCHITECTURE NOTE**
+<h2 align="center">⬛ SAFETY & ROLLBACK ENGINE</h2>
 
-Absolute power requires absolute safety. This repository is built upon a **Reversible Tweaks Architecture**. We do not believe in permanent, destructive modifications. 
+<div align="center">
+  
+<kbd>Snapshot</kbd> ➔ <kbd>Configure</kbd> ➔ <kbd>Log</kbd> ➔ <kbd>Manifest</kbd> ➔ <kbd>Rollback Ready</kbd>
 
-```text
-Snapshot Current State
-        ↓
-Apply Configuration
-        ↓
-Log Changes
-        ↓
-Generate Manifest
-        ↓
-Enable Rollback
-```
+</div>
+<br>
 
-> **NO** destructive service deletion.
-> **NO** irreversible registry wiping.
-> **NO** hidden scheduled task removal.
+Absolute power requires absolute safety. This repository is built upon a **Reversible Tweaks Architecture**. 
+
+* 🛑 **NO** destructive service deletion.
+* 🛑 **NO** irreversible registry wiping.
+* 🛑 **NO** hidden scheduled task removal.
 
 Every change acts as an isolated transaction, enabling complete system state exports and rollback manifests.
 
----
+<br>
 
-## ⬛ PERFORMANCE PHILOSOPHY
+<h2 align="center">⬛ PERFORMANCE PHILOSOPHY</h2>
 
-> **Trust, Transparency, and Reversibility.**
+<table align="center">
+  <tr>
+    <th align="center">❌ WHAT WINAUREX AVOIDS</th>
+    <th align="center">✔ WHAT WINAUREX PRIORITIZES</th>
+  </tr>
+  <tr>
+    <td>
+      • Fake RAM boosters<br>
+      • Placebo registry hacks<br>
+      • Aggressive Defender removal<br>
+      • Broken BCDEDIT timer tweaks<br>
+      • Blind service nuking
+    </td>
+    <td>
+      • Scheduling optimization<br>
+      • UI responsiveness<br>
+      • Background overhead reduction<br>
+      • Observability<br>
+      • Rollback safety
+    </td>
+  </tr>
+</table>
 
-**What WinAurex Avoids:**
-```text
-✖ Fake RAM boosters
-✖ Placebo registry hacks
-✖ Aggressive Defender removal
-✖ Broken BCDEDIT timer tweaks
-✖ Blind service nuking
-```
+<br>
 
-**What WinAurex Prioritizes:**
-```text
-✔ Scheduling optimization
-✔ UI responsiveness
-✔ Background overhead reduction
-✔ Observability
-✔ Rollback safety
-✔ Transparency
-```
+<h2 align="center">⬛ DEPLOYMENT FLOW</h2>
 
----
-
-## ⬛ INSTALLATION & INITIALIZATION
-
-```text
-1. Extract Release ZIP
-2. Run Initialize_Framework.ps1
-3. Create Restore Point
-4. Launch Dashboard
-5. Select Profile
-6. Review Logs
-```
+<div align="center">
 
 ```powershell
-PS> Initialize_Framework.ps1
+PS> .\Initialize_Framework.ps1
 [ OK ] Framework Initialized
 [ OK ] Restore Point Created
 [ OK ] Dashboard Shortcut Installed
 ```
 
----
+</div>
 
-## ⬛ OBSERVABILITY
+<br>
 
-Enterprise-grade observability is built into the core to make the framework feel alive. 
+<h2 align="center">⬛ OBSERVABILITY & TELEMETRY</h2>
 
-**Real-time Dashboard Metrics Include:**
-```text
-DPC Latency
-Boot Duration
-CPU Queue Length
-Memory Commit
-GPU Scheduling
-Background Tasks
-```
-Centralized logs for all script executions are routed to the `/Logs` directory. Monitor system health natively without third-party bloat.
+Enterprise-grade observability is built into the core. Monitor system health natively without third-party bloat.
 
----
+<div align="center">
+  <kbd>DPC Latency</kbd> | <kbd>Boot Duration</kbd> | <kbd>CPU Queue Length</kbd> | <kbd>Memory Commit</kbd> | <kbd>GPU Scheduling</kbd> | <kbd>Background Tasks</kbd>
+</div>
 
-## ⬛ DOCUMENTATION CONSOLE
+<br>
 
-```text
-[ Architecture ]
-[ Compatibility ]
-[ Registry Reference ]
-[ Rollback Engine ]
-[ Logging Standards ]
-[ Packaging Guide ]
-[ Myths & Anti-Patterns ]
-```
+<h2 align="center">⬛ DOCUMENTATION MATRIX</h2>
 
-Access the complete engineering database via the live dashboard interface:
-🔗 **[ACCESS THE LIVE DASHBOARD](https://windows-optimizations.netlify.app/)**
+<div align="center">
+  
+`[ Architecture ]` `[ Compatibility ]` `[ Registry Reference ]` 
+`[ Rollback Engine ]` `[ Logging Standards ]` `[ Myths & Anti-Patterns ]`
 
----
+<br>
 
-## ⬛ ROADMAP
+🔗 **[ACCESS THE LIVE ENGINEERING DASHBOARD](https://windows-optimizations.netlify.app/)**
 
-*   **Phase 1** — Core Architecture & Safety Engine
-*   **Phase 2** — Observability Layer & Telemetry
-*   **Phase 3** — WPF Dashboard Integration
-*   **Phase 4** — Packaging & Distribution
+</div>
 
----
+<br>
+
+<h2 align="center">⬛ ROADMAP</h2>
+
+<div align="center">
+
+**[ PHASE 1 ]** Core Architecture & Safety Engine <br>
+**[ PHASE 2 ]** Observability Layer & Telemetry <br>
+**[ PHASE 3 ]** WPF Dashboard Integration <br>
+**[ PHASE 4 ]** Packaging & Distribution
+
+</div>
 
 <br><br>
 
 <div align="center">
 
-═══════════════════════════════════
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png">
 
 `Engineered for transparency.`<br>
 `Designed for control.`<br>
