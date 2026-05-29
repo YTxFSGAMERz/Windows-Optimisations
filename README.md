@@ -218,6 +218,39 @@ Enterprise-grade observability is built into the core. Monitor system health nat
 
 </div>
 
+<!-- ═══ ANIMATED DIVIDER ═══ -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+<h2 align="center">⬛ CREDITS & AUTHOR</h2>
+
+<div align="center">
+
+<img src="https://avatars.githubusercontent.com/u/94067297?v=4" width="120" style="border-radius: 50%; border: 3px solid #00bcd4; box-shadow: 0 0 20px rgba(0, 188, 212, 0.6);">
+
+<br><br>
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1000&color=00BCD4&center=true&vCenter=true&width=500&lines=Farhan+%2F%2F+System+Architect;Cybersecurity+%26+AI+Enthusiast;Full-Stack+Developer;Building+scalable%2C+intelligent+systems+%F0%9F%9A%80)](https://github.com/YTxFSGAMERz)
+
+<br>
+
+> *Eradicate software bloat. Maximize raw hardware performance. Restore absolute user control.*
+
+<br>
+
+<a href="https://github.com/YTxFSGAMERz">
+  <img src="https://img.shields.io/badge/GITHUB-YTxFSGAMERz-00bcd4?style=for-the-badge&logo=github&logoColor=white">
+</a>
+&nbsp;
+<a href="https://t.me/YTxFSGAMERz">
+  <img src="https://img.shields.io/badge/TELEGRAM-YTxFSGAMERz-00bcd4?style=for-the-badge&logo=telegram&logoColor=white">
+</a>
+&nbsp;
+<a href="https://wa.me/917778906798">
+  <img src="https://img.shields.io/badge/WHATSAPP-CONNECT-00bcd4?style=for-the-badge&logo=whatsapp&logoColor=white">
+</a>
+
+</div>
+
 <br><br>
 
 <!-- ANIMATED CAPSULE-RENDER WAVING FOOTER -->
