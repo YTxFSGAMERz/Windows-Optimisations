@@ -16,6 +16,11 @@
   -webkit-backdrop-filter: blur(16px);
 }
 
+/* Hide the default VitePress circular glowing background behind the logo */
+.VPHero .image-bg {
+  display: none !important;
+}
+
 .dark {
   --vp-nav-bg-color: rgba(15, 16, 22, 0.5) !important;
   --vp-c-bg: #0b0c10; /* Deep rich dark background */
