@@ -1,6 +1,6 @@
 # 🛠️ Windows Tweaks & Optimizations Guide
 
-This document provides a highly detailed, comprehensive guide to all system modifications, registry tweaks, and shell scripts located in the `Tweaks/` directory. These configurations are designed to optimize Windows 10 & 11 for maximum responsiveness, privacy, and gaming efficiency.
+This document provides a highly detailed, comprehensive guide to all system modifications, registry tweaks, and shell scripts located in the `Tweaks/` directory. These configurations are designed to optimize Windows 10 & 11 for maximum responsiveness, privacy, and gaming efficiency. **All PowerShell scripts in this suite support zero-prompt, unattended execution simply by appending the `-Force` argument.**
 
 ---
 

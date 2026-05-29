@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Install Windows Terminal (Tweaks/Developer/Install_Windows_Terminal.ps1)
 
@@ -15,7 +20,7 @@ Write-Host "================================================="
 Write-Host "Windows Terminal is the modern, hardware-accelerated"
 Write-Host "command-line experience for Windows with tabs and profiles."
 Write-Host "Press 'Y' to install or any other key to abort..."
-$Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character
+if (-not $Force) { $Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character } else { $Confirm = 'y' }
 
 if ($Confirm -notmatch 'y') {
     Write-FrameworkLog -ModuleName "Developer" -Action "Aborted Windows Terminal Install"
@@ -38,3 +43,4 @@ Write-Host "`n[SUCCESS] Windows Terminal has been installed." -ForegroundColor G
 
 
 $null = Read-Host "Press Enter to exit..."
+

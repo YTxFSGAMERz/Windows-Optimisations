@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Generate System Report (Tools/System-Info/Generate_System_Report.ps1)
 
@@ -45,5 +50,10 @@ $Report | Out-File -FilePath $OutPath -Encoding UTF8
 
 Write-Host $Report
 Write-Host "`n[SUCCESS] Report generated and saved to: $OutPath" -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+}
+}
+

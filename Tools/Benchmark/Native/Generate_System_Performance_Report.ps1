@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Generate System Performance Report (Tools/Benchmark/Native/Generate_System_Performance_Report.ps1)
 
@@ -96,4 +101,5 @@ Write-Host "`n[SUCCESS] Report generated: $ReportFile" -ForegroundColor Green
 Write-Host "Open this file in your browser to view."
 
 Write-Host "`nPress any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+

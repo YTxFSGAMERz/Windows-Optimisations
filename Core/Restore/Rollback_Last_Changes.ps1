@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Rollback Last Changes (Core/Restore/Rollback_Last_Changes.ps1)
 
@@ -28,7 +33,7 @@ Write-Host "================================================="
 Write-Host "Found snapshot: $($LatestSnapshot.Name)"
 Write-Host "This will merge all .reg files from this snapshot back into the registry."
 Write-Host "Press 'Y' to continue or any other key to abort..."
-$Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character
+if (-not $Force) { $Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character } else { $Confirm = 'y' }
 
 if ($Confirm -notmatch 'y') {
     Write-FrameworkLog -ModuleName "RestoreEngine" -Action "Aborted Registry Rollback"
@@ -50,5 +55,10 @@ foreach ($File in $RegFiles) {
 
 Write-Host "`n[SUCCESS] Rollback completed from snapshot: $($LatestSnapshot.Name)" -ForegroundColor Green
 Write-Host "A restart is required to fully apply changes." -ForegroundColor Yellow
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+}
+}
+

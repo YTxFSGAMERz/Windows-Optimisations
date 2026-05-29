@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Snapshot Registry Keys (Core/Restore/Snapshot_Registry_Keys.ps1)
 
@@ -41,5 +46,10 @@ foreach ($Key in $KeysToBackup.GetEnumerator()) {
 }
 
 Write-Host "`n[SUCCESS] Registry snapshots saved to: $SnapshotFolder" -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+}
+}
+

@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Rebuild Search Index (Tweaks/Search/Rebuild_Search_Index.ps1)
 
@@ -16,7 +21,7 @@ Write-Host "WARNING: Rebuilding the search index will cause a temporary CPU and 
 Write-Host "Search results will be incomplete until the rebuild finishes (usually 15-60 minutes)."
 Write-Host "It is highly recommended to do this when the PC is idle."
 Write-Host "Press 'Y' to initiate rebuild, or any other key to abort..." -ForegroundColor Yellow
-$Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character
+if (-not $Force) { $Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character } else { $Confirm = 'y' }
 
 if ($Confirm -notmatch 'y') {
     Write-FrameworkLog -ModuleName "Search" -Action "Aborted Search Index Rebuild"
@@ -47,3 +52,4 @@ Write-Host "You can monitor the status in 'Indexing Options' in the Control Pane
 
 
 $null = Read-Host "Press Enter to exit..."
+

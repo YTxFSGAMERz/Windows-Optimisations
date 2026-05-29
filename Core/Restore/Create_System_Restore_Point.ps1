@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Create System Restore Point (Core/Restore/Create_System_Restore_Point.ps1)
 
@@ -29,5 +34,10 @@ catch {
     Write-Host "`n[ERROR] Failed to create restore point. Ensure System Protection is enabled in Windows." -ForegroundColor Red
 }
 
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+}
+}
+

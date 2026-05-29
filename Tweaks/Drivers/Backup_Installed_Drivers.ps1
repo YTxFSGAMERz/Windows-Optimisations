@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Backup Installed Drivers (Tweaks/Drivers/Backup_Installed_Drivers.ps1)
 
@@ -17,7 +22,7 @@ Write-Host "This will export all third-party drivers currently installed"
 Write-Host "on your system to a safe backup directory. This is critical"
 Write-Host "before doing major optimizations or GPU driver cleanups (DDU)."
 Write-Host "Press 'Y' to begin the backup or any other key to abort..."
-$Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character
+if (-not $Force) { $Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character } else { $Confirm = 'y' }
 
 if ($Confirm -notmatch 'y') {
     Write-FrameworkLog -ModuleName "Drivers" -Action "Aborted Driver Backup"
@@ -42,5 +47,10 @@ Write-FrameworkLog -ModuleName "Drivers" -Action "Completed third-party driver e
 Write-Host "`n================================================="
 Write-Host "[SUCCESS] Drivers have been exported safely." -ForegroundColor Green
 Write-Host "Backup Location: $ExportDir"
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+}
+}
+

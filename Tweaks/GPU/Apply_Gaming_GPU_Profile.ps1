@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Apply Gaming GPU Profile (Tweaks/GPU/Apply_Gaming_GPU_Profile.ps1)
 
@@ -16,7 +21,7 @@ Write-Host "This profile configures Windows to prioritize game performance."
 Write-Host "It enables Hardware Accelerated GPU Scheduling (HAGS) for higher FPS"
 Write-Host "and enables Windows Game Mode to suppress background activity."
 Write-Host "Press 'Y' to continue or any other key to abort..."
-$Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character
+if (-not $Force) { $Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character } else { $Confirm = 'y' }
 
 if ($Confirm -notmatch 'y') {
     Write-FrameworkLog -ModuleName "GPU" -Action "Aborted Gaming GPU Profile Deployment"
@@ -29,14 +34,19 @@ Write-FrameworkLog -ModuleName "GPU" -Action "Starting Master Gaming GPU Orchest
 $ScriptDir = $PSScriptRoot
 
 Write-Host "`n[1/2] Enabling Hardware Accelerated GPU Scheduling..." -ForegroundColor Cyan
-& (Join-Path -Path $ScriptDir -ChildPath "Enable_Hardware_Accelerated_GPU_Scheduling.ps1")
+& (Join-Path -Path $ScriptDir -ChildPath "Enable_Hardware_Accelerated_GPU_Scheduling.ps1") -Force:$Force
 
 Write-Host "`n[2/2] Enabling Windows Game Mode..." -ForegroundColor Cyan
-& (Join-Path -Path $ScriptDir -ChildPath "Enable_Game_Mode.ps1")
+& (Join-Path -Path $ScriptDir -ChildPath "Enable_Game_Mode.ps1") -Force:$Force
 
 Write-FrameworkLog -ModuleName "GPU" -Action "Completed Master Gaming GPU Orchestrator" -Level WARNING
 
 Write-Host "`n[SUCCESS] Gaming GPU Profile deployment complete!" -ForegroundColor Green
 Write-Host "A system reboot is highly recommended to apply GPU scheduling changes." -ForegroundColor Red
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+}
+}
+

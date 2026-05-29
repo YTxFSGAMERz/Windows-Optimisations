@@ -1,3 +1,8 @@
+[CmdletBinding()]
+param (
+    [switch]$Force
+)
+
 # Windows Configuration & Optimization Framework
 # Install Essential Apps via WinGet (Tools/Apps/Install_Essential_Apps_WinGet.ps1)
 
@@ -13,7 +18,7 @@ Write-Host "This script will use Microsoft's native package manager (WinGet)"
 Write-Host "to silently install essential utilities for a fresh Windows setup."
 Write-Host "Apps to install: 7-Zip, VLC, Notepad++, Brave Browser, Discord."
 Write-Host "Press 'Y' to continue or any other key to abort..."
-$Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character
+if (-not $Force) { $Confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown").Character } else { $Confirm = 'y' }
 
 if ($Confirm -notmatch 'y') {
     Write-Host "`nAborted by user."
@@ -50,5 +55,8 @@ foreach ($Id in $Apps.Keys) {
 
 Write-Host "================================================="
 Write-Host "[SUCCESS] All essential applications have been processed!" -ForegroundColor Green
-Write-Host "Press any key to exit..."
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if (-not $Force) {
+    Write-Host "Press any key to exit..."
+    if (-not $Force) { $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") }
+}
+
